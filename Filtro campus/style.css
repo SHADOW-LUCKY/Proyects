@@ -91,7 +91,17 @@ width: 50%;
   width: 30%;
   height: 30vh;
   border: #2c3e50 solid 1px;
-  margin:1.5% ;
+  margin:1% ;
+}
+.img{
+  width: 100%;
+  height: 60%;
+  background-color: aqua;
+}
+.forty{
+  width:100%;
+  height: 40%;
+  background-color: cadetblue;
 }
 /* section(alertuse) */
 #lock{
@@ -125,7 +135,7 @@ footer{
  height: 20vh;
  }
  /* responsive */
-  @media (max-width: 952px){
+  @media (max-width: 1540px){
     label.logo{
       font-size: 30px;
       padding-left: 50px;
@@ -134,7 +144,7 @@ footer{
       font-size: 16px;
     }
   }
-  @media (max-width: 768px){
+  @media (max-width: 1148px){
     nav{
       position:fixed;
     }
@@ -217,3 +227,50 @@ footer{
     }
 
   }
+  button {
+  background-color: #47a386;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 25px;
+}
+.modal-container {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;  
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: opacity 0.3s ease;
+}
+
+.show {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.modal {
+  background-color: #fff;
+  width: 600px;
+  max-width: 100%;
+  padding: 30px 50px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal h1 {
+  margin: 0;
+}
+
+.modal p {
+  opacity: 0.7;
+  font-size: 14px;
+}
