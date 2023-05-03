@@ -1,5 +1,5 @@
 import { navbar,footer } from "./inicio.js"
-const alert = document.querySelector('body')
+c0
 const section = `    
 <section id="lock">
     1

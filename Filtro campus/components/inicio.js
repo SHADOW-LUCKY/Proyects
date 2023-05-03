@@ -1,4 +1,4 @@
-const inicio = document.querySelector('body')
+const inicio = doc  ument.querySelector('body')
 let section = `<section id="init">
 <div id="prin">1</div>
 <div id="by1">2</div>
