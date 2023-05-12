@@ -3,7 +3,7 @@ const register = document.querySelector('#register')
 /* login */
 const login = document.querySelector('#userver')
 /* url */
-const url = 'http://localhost:4000'
+const url = 'http://localhost:4001'
 let config = {/* methods */
   headers:new Headers({
       "Content-Type": "application/json"
@@ -35,11 +35,11 @@ if (verify == false){
     }
   });
   if (token == true) {
-    window.location.href = 'index.html'
+    window.location.href = 'html/dash.html'
   }else{
     alert('usuario o contraseña incorrecta')
   }
-}
+} 
 
 }
 login.addEventListener('submit', verify)
