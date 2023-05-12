@@ -1,9 +1,19 @@
 {
   "usuarios": [
     {
-      "userName": "nice",
+      "userName": "ausecha",
       "password": "123",
       "id": 1
+    },
+    {
+      "userName": "zharick(not restaurant)",
+      "password": "456",
+      "id": 2
+    },
+    {
+      "userName": "nock",
+      "password": "789",
+      "id": 3
     }
   ]
 }
