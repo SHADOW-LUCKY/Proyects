@@ -1,0 +1,29 @@
+{
+  "usuarios": [
+    {
+      "id": "123",
+      "nombre": "Miguel",
+      "apellido": "Castro",
+      "edad": "23"
+    },
+    {
+      "id": "1683294903082",
+      "nombre": "AAAAA",
+      "apellido": "BBBB",
+      "edad": "CCCCC"
+    },
+    {
+      "id": "bjhbjh",
+      "nombre": "bhj",
+      "apellido": "bj",
+      "edad": "bjhhj"
+    },
+    {
+      "id": "1234",
+      "nombre": "nice",
+      "apellido": "nice",
+      "edad": "24"
+    }
+  ]
+  
+}
