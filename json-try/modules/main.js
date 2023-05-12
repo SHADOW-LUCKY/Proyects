@@ -20,7 +20,7 @@ let config = {
 };
 const getUserAll = async()=>{
     config.method = "GET";
-    let res = await ( await fetch("http://localhost:4000/usuarios",config)).json();
+    let res = await ( await fetch("s",config)).json();
     console.log(res);
 }
 const postUser = async(data)=>{
