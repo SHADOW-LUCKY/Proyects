@@ -1,7 +1,3 @@
-/* REGISTER */
-const register = document.querySelector('#register')
-/* login */
-const login = document.querySelector('#userver')
 /* url */
 const url = 'http://localhost:4001'
 let config = {/* methods */
@@ -9,13 +5,18 @@ let config = {/* methods */
       "Content-Type": "application/json"
   }), 
 };
+/* REGISTER */
+const register = document.querySelector('#register')
+/* login */
+const login = document.querySelector('#userver')
+
 /* post */
 const postUser = async(e)=> {
   e.preventDefault()
   let data = Object.fromEntries(new FormData(e.target))
   config.method = "POST"
   config.body = JSON.stringify(data)
- let ans = await fetch(`${url}/usuarios`, config)
+  let ans = await fetch(`${url}/usuarios`, config)
   console.log(ans)
 }
 /* verify */
@@ -24,7 +25,6 @@ e.preventDefault()
 let data = Object.fromEntries(new FormData(e.target))
 let userVer = await fetch(`${url}/usuarios`) 
 let verify = await userVer.json()
-console.log(data)
 if (verify == false){
   alert('no hay datos')
 }else{

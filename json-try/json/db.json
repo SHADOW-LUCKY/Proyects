@@ -15,5 +15,15 @@
       "password": "789",
       "id": 3
     }
+  ],
+  "categorias": [
+    {
+      "category": "nice",
+      "id": 2
+    },
+    {
+      "category": "indedd",
+      "id": 3
+    }
   ]
 }
