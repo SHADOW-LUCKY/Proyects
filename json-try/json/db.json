@@ -18,12 +18,28 @@
   ],
   "categorias": [
     {
-      "category": "nice",
+      "category": "Electrodomesticos",
+      "id": 1
+    },
+    {
+      "category": "Cafeteria",
       "id": 2
     },
     {
-      "category": "indedd",
+      "category": "Juegos",
       "id": 3
+    },
+    {
+      "category": "Ropa femenina",
+      "id": 4
+    },
+    {
+      "category": "Ropa infantil",
+      "id": 5
+    },
+    {
+      "category": "Ferreteria",
+      "id": 6
     }
   ]
 }

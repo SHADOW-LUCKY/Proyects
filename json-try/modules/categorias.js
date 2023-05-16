@@ -1,7 +1,6 @@
 /* Form y config */
 const cate = document.querySelector('#cate')
 const ans = document.querySelector('#ans')
-
 const url = 'http://localhost:4001'
 const config = {
     headers: new Headers({
@@ -17,24 +16,22 @@ const addCate= async (e)=> {
     let info = await fetch(`${url}/categorias`, config)
     showCate()
 }
-
-/* function delCate(e){
-   e.preventDefault();
-       let id = e.target.value
-       config.method = "DELETE"
-       let info = fetch(`${url}/categorias/${id}`, config)
-       showCate()
-} */
+async function delCate(e){
+    let info = e.target.value;
+    config.method = "DELETE"
+    let peticion = await fetch(`${url}/categorias/${info}`, config)
+    showCate()
+} 
 
 const showCate = async()=> {
     let info = await fetch(`${url}/categorias`)
-    let data = await info.json()
+    let data = await info.json(`${url}/categorias`, config)
     data.forEach(element => {
         let plantilla=`
         <tr>
         <th>${element.id}</th>
         <th>${element.category}</th>
-        <th><button type="button" id="delete" onclick="delCate(this)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
+        <th><button type="button" id="delete" onclick="delCate(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
         ans.innerHTML +=  plantilla
     });
 }
