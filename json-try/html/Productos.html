@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <script src="   https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <!-- SCRIPTS -->
+    <script src="../modules/jquery.min.js" defer>
+    </script>
+    <script src="../modules/bootstrap.bundle.min.js" defer></script>
+    <script src="../modules/jquery.easing.min.js" defer></script>
+    <script src="../modules/sb-admin-2.min.js" defer></script>
+
 </head>
 
 <body id="page-top">
@@ -87,7 +94,7 @@
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle" id="sidebarToggle">
-                    
+
                 </button>
             </div>
 
@@ -136,54 +143,77 @@
                 <div>
                     <h1>Productos</h1>
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      añadir producto
+                    <button type="button" class="btn btn-dark ml-3" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        añadir producto
                     </button>
-    
+                    <hr>
+                    <table class="display" width="100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Categorias</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ans">
 
-   
-    <!--PANTALLA SALIR DE LA SESION-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nos vamos ya?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Seleccione salir para salir de la sesion.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="index.html">Salir</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Form Productos-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="">
-            <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input class="form-control mb-3" type="text" placeholder="Nombre Producto" aria-label="default input example">
-                    <select class="form-select" aria-label="Default select example">
-                        
-                    </select>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-        </form>
-    </div>
-  </div>
+                        </tbody>
+                    </table>
+
+
+
+                    <!--PANTALLA SALIR DE LA SESION-->
+                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Nos vamos ya?</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">Seleccione salir para salir de la sesion.</div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button"
+                                        data-dismiss="modal">Cancelar</button>
+                                    <a class="btn btn-primary" href="index.html">Salir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Form Productos-->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <form id="form">
+                                <div class=" modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Producto</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input class="form-control mb-3" type="text" placeholder="Nombre Producto"
+                                            aria-label="default input example" name="nombre">
+                                        <input type="number" class="form-control mb-3" name="price"
+                                            placeholder="precio">
+                                        <input type="number" class="form-control mb-3" name="stock" placeholder="stock">
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="categoriaElec" id="select">
+
+                                        </select>
+                                    </div>
+                                    <div class=" modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <footer class="sticky-footer bg-white">
@@ -192,20 +222,11 @@
                         <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
-            </footer>    
+            </footer>
         </div>
-        
+
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="../modules/jquery.min.js"></script>
-    <script src="../modules/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../modules/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../modules/sb-admin-2.min.js"></script>
+    <script src="../modules/productos.js"></script>
 
 
 </body>

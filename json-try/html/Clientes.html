@@ -15,6 +15,12 @@
     <!-- CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- scripts -->
+    <script src="../modules/jquery.min.js" defer></script>
+    <script src="../modules/bootstrap.bundle.min.js" defer></script>
+    <script src="../modules/jquery.easing.min.js" defer></script>
+    <script src="../modules/sb-admin-2.min.js" defer></script>
+    <script src="   https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 
 <body id="page-top">
@@ -117,7 +123,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle" src="imgs/login.png">
+                                <img class="img-profile rounded-circle" src="../imgs/login.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -132,14 +138,33 @@
                     </ul>
 
                 </nav>
-                <div class="d-flex">
-                    <h1>Bienvenido tomate tu tiempo :)</h1>
+                <div>
+                    <h1>Clientes</h1>
+                    <button type=" button" class="btn btn-dark ml-3" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        añadir Clientes
+                    </button>
+                    <hr>
+                    <table class="display" width="100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Telefono</th>
+                                <th>Direccion</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ans">
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- End of Main Content -->
 
-            <!-- Footer -->
+
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -147,10 +172,7 @@
                     </div>
                 </div>
             </footer>
-            <!-- End of Footer -->
-
         </div>
-        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -178,18 +200,29 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="../modules/jquery.min.js"></script>
-    <script src="../modules/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../modules/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../modules/sb-admin-2.min.js"></script>
-
-
+    <!-- modal form clientes -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="form">
+                <div class=" modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Cliente</h1>
+                    </div>
+                    <div class="modal-body">
+                        <input class="form-control mb-3" type="text" placeholder="Nombre"
+                            aria-label="default input example" name="nombre">
+                        <input type="text" class="form-control mb-3" name="direccion" placeholder="Direccion">
+                        <input type="number" class="form-control mb-3" name="telefono" placeholder="Telefono">
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../modules/clientes.js"></script>
 </body>
 
 </html>

@@ -22,6 +22,7 @@
             <label for="exampleInputEmail1" class="form-label">User</label>
             <input type="text" class="form-control" name="userVer" ">
             </div>
+           
           <div class=" mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control" name="passVer">
@@ -45,12 +46,24 @@
                 <label for="recipient-name" class="col-form-label">User name</label>
                 <input type="text" class="form-control" name="userName">
               </div>
-              <div class="mb-3">
+              <div class="row">
+                <div class="col">
+                  <label for="exampleInputEmail1" class="form-label">nombre(real)</label>
+                  <input type="text" class="form-control" name="nombre" ">
+                  </div>
+                </div>
+                <div class=" col">
+                  <label for=" exampleInputEmail1" class="form-label">email</label>
+                  <input type="email" class="form-control" name="email" id="exampleInputEmail1">
+                </div>
+              </div>
+              <div class="mb-3 p-3">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" name="password">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Send message</button>
               </div>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Send message</button>
+
             </form>
           </div>
         </div>

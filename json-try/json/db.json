@@ -1,45 +1,61 @@
 {
   "usuarios": [
     {
-      "userName": "ausecha",
-      "password": "123",
-      "id": 1
-    },
-    {
-      "userName": "zharick(not restaurant)",
-      "password": "456",
-      "id": 2
-    },
-    {
       "userName": "nock",
+      "nombre": "Jairo",
+      "email": "nicordonezausecha@gmail.com",
       "password": "789",
-      "id": 3
+      "id": 1
     }
   ],
   "categorias": [
     {
-      "category": "Electrodomesticos",
+      "categoria": "Electrodomesticos",
       "id": 1
     },
     {
-      "category": "Cafeteria",
+      "categoria": "Cafeteria",
       "id": 2
     },
     {
-      "category": "Juegos",
+      "categoria": "Juegos",
       "id": 3
     },
     {
-      "category": "Ropa femenina",
+      "categoria": "Ropa femenina",
       "id": 4
     },
     {
-      "category": "Ropa infantil",
+      "categoria": "Ropa infantil",
       "id": 5
     },
     {
-      "category": "Ferreteria",
+      "categoria": "Ferreteria",
       "id": 6
     }
-  ]
+  ],
+  "productos": [
+    {
+      "nombre": "Gaseosas",
+      "price": "5000",
+      "stock": "30",
+      "categoriaElec": "Cafeteria",
+      "id": 1
+    },
+    {
+      "nombre": "Televisor",
+      "price": "2000000",
+      "stock": "2",
+      "categoriaElec": "Electrodomesticos",
+      "id": 2
+    },
+    {
+      "nombre": "Martillo",
+      "price": "5000",
+      "stock": "3",
+      "categoriaElec": "Ferreteria",
+      "id": 3
+    }
+  ],
+  "clientes": []
 }

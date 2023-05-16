@@ -25,12 +25,12 @@ async function delCate(e){
 
 const showCate = async()=> {
     let info = await fetch(`${url}/categorias`)
-    let data = await info.json(`${url}/categorias`, config)
+    let data = await info.json()
     data.forEach(element => {
         let plantilla=`
         <tr>
         <th>${element.id}</th>
-        <th>${element.category}</th>
+        <th>${element.categoria}</th>
         <th><button type="button" id="delete" onclick="delCate(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
         ans.innerHTML +=  plantilla
     });
