@@ -42,7 +42,7 @@ async function showProc() {
         <th>${element.categoriaElec}</th>
         <th>${element.nombre}</th>
         <th>${element.price}$</th>
-        <th><button type="button" id="delete" onclick="delProc(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
+        <th><button type="button"  onclick="delProc(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
         ans.innerHTML +=  plantilla
     });
 }

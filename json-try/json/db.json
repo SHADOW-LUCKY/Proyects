@@ -4,8 +4,8 @@
       "userName": "nock",
       "nombre": "Jairo",
       "email": "nicordonezausecha@gmail.com",
-      "password": "789",
-      "id": 1
+      "password": "456",
+      "id": 2
     }
   ],
   "categorias": [
@@ -57,5 +57,12 @@
       "id": 3
     }
   ],
-  "clientes": []
+  "clientes": [
+    {
+      "nombre": "Jairo",
+      "direccion": "Calle 15 b # 3 w -22",
+      "telefono": "32452354",
+      "id": 1
+    }
+  ]
 }

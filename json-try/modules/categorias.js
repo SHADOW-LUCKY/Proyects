@@ -31,7 +31,7 @@ const showCate = async()=> {
         <tr>
         <th>${element.id}</th>
         <th>${element.categoria}</th>
-        <th><button type="button" id="delete" onclick="delCate(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
+        <th><button type="button" onclick="delCate(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
         ans.innerHTML +=  plantilla
     });
 }
