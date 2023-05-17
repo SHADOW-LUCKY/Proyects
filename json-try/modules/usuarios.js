@@ -11,8 +11,8 @@ const showUser = async()=> {
     data.forEach(element => {
         let plantilla = `<tr>
         <th>${element.id}</th>
-        <th>${element.nombre}</th>
-        <th>${element.userName}</th>
+        <th>${element.empleado}</th>
+        <th>${element.username}</th>
         <th>${element.email}</th>
         <th><button type="button" id="delete" onclick="delUser(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
         ans.innerHTML +=  plantilla

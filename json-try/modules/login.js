@@ -17,7 +17,6 @@ const postUser = async(e)=> {
   config.method = "POST"
   config.body = JSON.stringify(data)
   let ans = await fetch(`${url}/usuarios`, config)
-  console.log(ans)
 }
 /* verify */
 const verify = async(e)=> {
@@ -30,7 +29,7 @@ if (verify == false){
 }else{
   let token = false
   verify.forEach((log) => {
-    if (data.userVer == log.userName && data.passVer == log.password) {
+    if (data.userVer == log.username && data.passVer == log.password) {
       token = true
     }
   });

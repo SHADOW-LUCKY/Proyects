@@ -1,11 +1,25 @@
 {
   "usuarios": [
     {
-      "userName": "nock",
-      "nombre": "Jairo",
+      "username": "nock",
+      "empleado": "Jairo1",
       "email": "nicordonezausecha@gmail.com",
       "password": "456",
+      "id": 1
+    },
+    {
+      "username": "kaitech123",
+      "empleado": "andrea1",
+      "email": "ausecha23@gamil.com",
+      "password": "789",
       "id": 2
+    },
+    {
+      "username": "NICOLAX_LUCKY",
+      "empleado": "nico1",
+      "email": "nicordonezausecha@gmail.com",
+      "password": "123",
+      "id": 3
     }
   ],
   "categorias": [
@@ -59,9 +73,31 @@
   ],
   "clientes": [
     {
-      "nombre": "Jairo",
+      "cliente": "Jairo",
       "direccion": "Calle 15 b # 3 w -22",
       "telefono": "32452354",
+      "id": 1
+    },
+    {
+      "cliente": "andrea",
+      "direccion": "Calle 15 b # 3 w -22",
+      "telefono": "3004548324",
+      "id": 2
+    },
+    {
+      "cliente": "nico",
+      "direccion": "Calle 15 b # 3 w -22",
+      "telefono": "3006999702",
+      "id": 3
+    }
+  ],
+  "ventas": [
+    {
+      "clienteElec": "Jairo",
+      "empleadoElec": "Jairo1",
+      "fecha": "2023-05-28",
+      "productoElec": "Gaseosas",
+      "cantidad": "10",
       "id": 1
     }
   ]

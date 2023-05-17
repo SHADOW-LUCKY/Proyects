@@ -28,7 +28,7 @@ async function showClient() {
             let plantilla = `<tr>
             <th>${element.id}</th>
             <th><img src="../imgs/user.png" alt="..." height="30px"></th>
-            <th>${element.nombre}</th>
+            <th>${element.cliente}</th>
             <th>${element.telefono}</th>
             <th>${element.direccion}</th>
             <th><button type="button" id="delete" onclick="delClient(event)" value="${element.id}" class="btn btn-danger">Borrar</button></th></tr>`
