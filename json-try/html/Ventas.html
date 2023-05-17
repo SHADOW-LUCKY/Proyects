@@ -145,6 +145,21 @@
                     data-bs-target="#exampleModal">
                     añadir venta
                 </button>
+                <table class="display" width="100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Empleado</th>
+                            <th>Fecha</th>
+                            <th>Detalle</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ans">
+
+                    </tbody>
+                </table>
                 </div>
             </div>
             <footer class=" sticky-footer bg-white">
@@ -212,6 +227,19 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    <!-- modal detalles -->
+    <div class="modal fade" id="venta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+                <div class=" modal-content" >
+                    <div class="p-3" id="detalle">
+
+                    </div>
+                    <div class=" modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
         </div>
     </div>
     <script src="../modules/venta.js"></script>

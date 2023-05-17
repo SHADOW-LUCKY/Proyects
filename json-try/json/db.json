@@ -65,8 +65,8 @@
     },
     {
       "nombre": "Martillo",
-      "price": "5000",
-      "stock": "3",
+      "price": "14000",
+      "stock": "4",
       "categoriaElec": "Ferreteria",
       "id": 3
     }
@@ -99,6 +99,14 @@
       "productoElec": "Gaseosas",
       "cantidad": "10",
       "id": 1
+    },
+    {
+      "clienteElec": "nico",
+      "empleadoElec": "andrea1",
+      "fecha": "2023-05-25",
+      "productoElec": "Martillo",
+      "cantidad": "10",
+      "id": 2
     }
   ]
 }
