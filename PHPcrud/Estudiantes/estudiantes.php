@@ -94,7 +94,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
+            <form class="col d-flex flex-wrap" action="registrar.php" method="post">
               <div class="mb-1 col-12">
                 <label for="nombres" class="form-label">Nombres</label>
                 <input 
