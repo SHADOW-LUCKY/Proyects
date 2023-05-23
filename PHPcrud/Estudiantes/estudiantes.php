@@ -109,8 +109,8 @@
                 <label for="direccion" class="form-label">Direccion</label>
                 <input 
                   type="text"
-                  id="direccion"
-                  name="direccion"
+                  id="direcion"
+                  name="direcion"
                   class="form-control"  
                 />
               </div>

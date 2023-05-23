@@ -10,9 +10,9 @@ if(!defined("DB_NAME")){
     define("DB_NAME","campus");
 }
 if(!defined("DB_USER")){
-    define("DB_USER","campers");
+    define("DB_USER","campus");
 }
 if(!defined("DB_PWD")){
-    define("DB_PWD","campus");
+    define("DB_PWD","campus2023");
 }
 ?>

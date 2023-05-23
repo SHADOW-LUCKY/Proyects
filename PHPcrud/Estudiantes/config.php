@@ -14,7 +14,7 @@ class Config{
         $this->direcion = $direcion;
         $this->logros = $logros;
         /* linkeada a la base de datos */
-    $this->dbCnx = new PDO(DB_TYPE."host:".DB_HOST.";dbname=".DB_NAME,DB_USER,DB_PWD,[PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]);
+        $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     /* setters y getters */
     public function setID($id) {
@@ -43,8 +43,8 @@ class Config{
     }
     public function insertData(){
        try {
-        $stm = $this->dbCnx->prepare("INSERT INTO campers (nombres,direcion,logros) values(?,?,?)");
-        $stm -> execute($this->nombres, $this->direcion, $this->logros);
+        $stm = $this->dbCnx->prepare("INSERT INTO campers(nombres,direcion,logros) values(?,?,?)");
+        $stm->execute([$this->nombres, $this->direcion, $this->logros]);
        } catch (Exception $e) {
         return $e -> getMessage();
        }
