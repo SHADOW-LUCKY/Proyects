@@ -1,5 +1,5 @@
 'use strict';
-//constructores
+*///constructores
 const Person = function(birth,name) {
     this.birth = birth;
     this.name = name;
@@ -30,4 +30,23 @@ console.log(Person.prototype.isPrototypeOf(Person));
 console.log(Person.prototype);
 //el prototipo funciona asi 
 //persona tiene un constructor pero cuando hacemos prototype se refiere al constructor de persona osea Person.prototype no es el prototype de persona si no lo que lo construye
-Person.prototype.species = 'humano'
+Person.prototype.species = 'humano'*/
+/* prueba coding challenge */
+const Car = function(make,speed){
+    this.make= make
+    this.speed= speed
+}
+Car.prototype.heyList=function(){
+    console.log(`the ${this.make} is going at ${this.speed}`)
+}
+Car.prototype.accer=function(){
+    this.speed +=10
+}
+Car.prototype.brake=function(){
+    this.speed -=5
+} 
+let num1 = new Car('BMW',110)
+let num2 = new Car('mercedes',85)
+num1.accer()
+num1.brake()
+num1.heyList()
