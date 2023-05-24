@@ -1,9 +1,4 @@
 <?php
-ini_set("display_errors", 1);
-
-ini_set("display_startup_errors", 1);
-
-error_reporting(E_ALL);
 require_once("config.php");
 $data = new Config();
 $all = $data->selectAll();
@@ -35,7 +30,7 @@ $all = $data->selectAll();
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
-       
+        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
         <h3>Maicol Estrada</h3>
       </div>
       <div class="menus">
@@ -66,10 +61,10 @@ $all = $data->selectAll();
               <th scope="col">NOMBREs</th>
               <th scope="col">DIRECCION</th>
               <th scope="col">LOGROS</th>
-              <th scope="col">Ingles</th>
-              <th scope="col">Ser</th>
-              <th scope="col">Skills</th>
-              <th scope="col">Review</th>
+              <th scope="col">INGLES</th>
+              <th scope="col">SER</th>
+              <th scope="col">SKILLS</th>
+              <th scope="col">REVIEW</th>
               <th scope="col">Borrar</th>
             </tr>
           </thead>
@@ -83,11 +78,10 @@ $all = $data->selectAll();
               <td><?php echo $val['nombres']?></td>
               <td><?php echo $val['direcion']?></td>
               <td><?php echo $val['logros']?></td>
-              <td><?php echo $val['logros']?></td>
-              <td><?php echo $val['notaIngles']?></td>
-              <td><?php echo $val['notaSer']?></td>
-              <td><?php echo $val['notaSkills']?></td>
-              <td><?php echo $val['notaReview']?></td>
+              <td><?php echo $val['ingles']?></td>
+              <td><?php echo $val['ser']?></td>
+              <td><?php echo $val['skills']?></td>
+              <td><?php echo $val['review']?></td>
               <td><a class="btn btn-danger" href="borrar.php?id=<?=$val['id']?>&req=delete">Borrar</a></td>
             </tr>
             <?php } ?>
@@ -134,8 +128,8 @@ $all = $data->selectAll();
                 <label for="direccion" class="form-label">Direccion</label>
                 <input 
                   type="text"
-                  id="direccion"
-                  name="direccion"
+                  id="direcion"
+                  name="direcion"
                   class="form-control"  
                 />
               </div>
@@ -152,62 +146,49 @@ $all = $data->selectAll();
               </div>
 
               <div class="mb-1 col-12">
-                <label for="Especialidad" class="form-label">Especialidad</label>
+                <label for="logros" class="form-label">Ingles</label>
                 <input 
-                  type="text"
-                  id="especialidad"
-                  name="especialidad"
+                  type="number"
+                  id="ingles"
+                  name="ingles"
                   class="form-control"  
                  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="Nota Ingles" class="form-label">Nota Ingles</label>
+                <label for="logros" class="form-label">Ser</label>
                 <input 
                   type="number"
-                  step="0.01"
-                  id="notaIngles"
-                  name="notaIngles"
+                  id="ser"
+                  name="ser"
                   class="form-control"  
                  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="Nota Ser" class="form-label">Nota Ser</label>
+                <label for="logros" class="form-label">Skills</label>
                 <input 
                   type="number"
-                  step="0.01"
-                  id="notaSer"
-                  name="notaSer"
+                  id="skills"
+                  name="skills"
                   class="form-control"  
                  
                 />
               </div>
-
+                      
               <div class="mb-1 col-12">
-                <label for="Nota Skills" class="form-label">Nota Skills</label>
+                <label for="logros" class="form-label">Review</label>
                 <input 
                   type="number"
-                  step="0.01"
-                  id="notaSkills"
-                  name="notaSkills"
+                  id="review"
+                  name="review"
                   class="form-control"  
                  
                 />
               </div>
-
-              <div class="mb-1 col-12">
-                <label for="Nota Review" class="form-label">Nota Review</label>
-                <input 
-                  type="number"
-                  step="0.01"
-                  id="notaReview"
-                  name="notaReview"
-                  class="form-control"  
-                />
-              </div>
+              
               <div class=" col-12 m-2">
                 <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
               </div>
