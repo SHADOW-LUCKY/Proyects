@@ -1,5 +1,5 @@
 'use strict';
-*///constructores
+/*//constructores
 const Person = function(birth,name) {
     this.birth = birth;
     this.name = name;
@@ -32,7 +32,7 @@ console.log(Person.prototype);
 //persona tiene un constructor pero cuando hacemos prototype se refiere al constructor de persona osea Person.prototype no es el prototype de persona si no lo que lo construye
 Person.prototype.species = 'humano'*/
 /* prueba coding challenge */
-const Car = function(make,speed){
+/* const Car = function(make,speed){
     this.make= make
     this.speed= speed
 }
@@ -50,3 +50,21 @@ let num2 = new Car('mercedes',85)
 num1.accer()
 num1.brake()
 num1.heyList()
+ */
+
+/* ES6 classes */
+/* expresion de clase */
+/* const PersonCl = class{} */
+/* clase declarada*/
+class PersonCl{
+    constructor(name,year){
+        this.name=name
+        this.year=year
+    }
+    calcAge(){
+       console.log(2037-this.year);
+    }
+}
+const nico = new PersonCl('nicolas','2005') 
+console.log(nico);
+nico.calcAge()
