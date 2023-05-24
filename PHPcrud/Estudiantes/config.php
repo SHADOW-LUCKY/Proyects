@@ -51,9 +51,19 @@ class Config{
     }
     public function selectAll()/* seleccion de los datos */{
         try {
-            $stm = $this->dbCnx->prepare("SELECT * FROM campers");/* prepara una sentencia */
+            $stm = $this->dbCnx->prepare("SELECT * FROM campers");/* prepara una sentencia(el * se refiere a todos ) */
             $stm->execute();/* ejecuta las sentencias en prepare */
             return $stm->fetchAll();/* metodo que saca todo */
+        } catch (Exception $e) {
+            return $e -> getMessage();/* si hay un error lo saca */
+        }
+    }
+    public function delete(){
+        try {
+            $stm = $this->dbCnx->prepare("DELETE FROM campers WHERE id=?"/*where es adonde se dirige  */);
+            $stm->execute([$this->id])/* es un metodo nativo */;
+            return $stm -> fetchAll();
+            echo"<script>alert('borrado exitosamente');document.location='estudiantes.php'</script>";
         } catch (Exception $e) {
             return $e -> getMessage();/* si hay un error lo saca */
         }

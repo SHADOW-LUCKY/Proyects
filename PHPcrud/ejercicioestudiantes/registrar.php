@@ -10,8 +10,13 @@ error_reporting(E_ALL);
         $config = new Config();
         /* instancias */
         $config-> setNombres($_POST['nombres']);
-        $config-> setDirecion($_POST['direcion']);
+        $config-> setDireccion($_POST['direccion']);
         $config-> setLogros($_POST['logros']);
+        $config-> setEspecialidad($_POST['especialidad']);
+        $config-> setNotaIngles($_POST['notaIngles']);
+        $config-> setNotaSer($_POST['notaSer']);
+        $config-> setNotaSkills($_POST['notaSkills']);
+        $config-> setNotaReview($_POST['notaReview']);
         /* insertar datos en la tabla */
         $config->insertData(); 
         /* verificado si funciona */
