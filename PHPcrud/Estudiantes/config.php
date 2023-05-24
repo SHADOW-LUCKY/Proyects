@@ -41,13 +41,22 @@ class Config{
     public function getLogros() {
         return $this->logros;
     }
-    public function insertData(){
+    public function insertData(){/* meter datos en un tabla */
        try {
         $stm = $this->dbCnx->prepare("INSERT INTO campers(nombres,direcion,logros) values(?,?,?)");
         $stm->execute([$this->nombres, $this->direcion, $this->logros]);
        } catch (Exception $e) {
         return $e -> getMessage();
        }
+    }
+    public function selectAll()/* seleccion de los datos */{
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM campers");/* prepara una sentencia */
+            $stm->execute();/* ejecuta las sentencias en prepare */
+            return $stm->fetchAll();/* metodo que saca todo */
+        } catch (Exception $e) {
+            return $e -> getMessage();/* si hay un error lo saca */
+        }
     }
 }
 ?>

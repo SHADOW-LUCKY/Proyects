@@ -1,3 +1,8 @@
+<?php
+require_once("config.php");
+$data = new Config();
+$all = $data->selectAll();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -60,13 +65,18 @@
             </tr>
           </thead>
           <tbody class="" id="tabla">
-
             <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
-       
-
+            <?php
+              foreach($all as $key => $val){
+            ?>
+            <tr>
+              <td><?php echo $val['id']?></td>
+              <td><?php echo $val['nombres']?></td>
+              <td><?php echo $val['direcion']?></td>
+              <td><?php echo $val['logros']?></td>
+            </tr>
           </tbody>
-        
+        <?php } ?>
         </table>
 
       </div>
