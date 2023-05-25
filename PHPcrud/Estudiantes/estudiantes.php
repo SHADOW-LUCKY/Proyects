@@ -61,6 +61,7 @@ $all = $data->selectAll();
               <th scope="col">NOMBREs</th>
               <th scope="col">DIRECCION</th>
               <th scope="col">LOGROS</th>
+              <th scope="col">Editar</th>
               <th scope="col">Borrar</th>
             </tr>
           </thead>
@@ -74,6 +75,7 @@ $all = $data->selectAll();
               <td><?php echo $val['nombres']?></td>
               <td><?php echo $val['direcion']?></td>
               <td><?php echo $val['logros']?></td>
+              <td><a class="btn btn-warning" href="editar.php?id=<?=$val['id']?>">Editar</a></td>
               <td><a class="btn btn-danger" href="borrar.php?id=<?=$val['id']?>&req=delete">Borrar</a></td>
             </tr>
             <?php } ?>

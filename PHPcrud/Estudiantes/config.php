@@ -53,17 +53,40 @@ class Config{
         try {
             $stm = $this->dbCnx->prepare("SELECT * FROM campers");/* prepara una sentencia(el * se refiere a todos ) */
             $stm->execute();/* ejecuta las sentencias en prepare */
-            return $stm->fetchAll();/* metodo que saca todo */
+            return $stm->fetchAll();/* metodo que saca todo(palabar reservada para PDO) */
         } catch (Exception $e) {
             return $e -> getMessage();/* si hay un error lo saca */
         }
     }
+    /* el signo de interrogacion simboliza los parametros */
     public function delete(){
         try {
-            $stm = $this->dbCnx->prepare("DELETE FROM campers WHERE id=?"/*where es adonde se dirige  */);
+        $stm = $this->dbCnx->prepare("DELETE FROM campers WHERE id=?"/*where es adonde se dirige  */);
             $stm->execute([$this->id])/* es un metodo nativo */;
             return $stm -> fetchAll();
             echo"<script>alert('borrado exitosamente');document.location='estudiantes.php'</script>";
+        } catch (Exception $e) {
+            return $e -> getMessage();/* si hay un error lo saca */
+        }
+    }
+    /* selecciona uno en especifico para luego editarlo */
+    public function selectOne(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM campers WHERE id=?");
+            $stm->execute([$this->id]);
+        return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e -> getMessage();/* si hay un error lo saca */
+        }
+    }
+    /* funcion para actualizar */
+    public function update(){
+        try {
+            /* palabra SET con UPDATE cambia los parametros seleccionados*/
+        $stm = $this->dbCnx->prepare("UPDATE campers SET nombres=?,direcion=?,logros=? WHERE id=?");
+        /* con que valores debe ejecutarse los comandos en prepare  */
+        $stm->execute([$this->nombres, $this->direcion, $this->logros, $this->id]);
+        return $stm->rowCount();
         } catch (Exception $e) {
             return $e -> getMessage();/* si hay un error lo saca */
         }
