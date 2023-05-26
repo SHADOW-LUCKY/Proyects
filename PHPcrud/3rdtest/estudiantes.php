@@ -66,6 +66,7 @@ $allData = $data->selectAll();
               <th scope="col">Categoria</th>
               <th scope="col">Descripcion</th>
               <th scope="col">Imagen</th>
+              <th scope="col">Editar</th>
               <th scope="col">Borrar</th>
             </tr>
           </thead>
@@ -79,6 +80,7 @@ $allData = $data->selectAll();
               <td><?php echo $val['categoria_nombre']?></td>
               <td><?php echo $val['descripcion']?></td>
               <td><img src="<?php echo $val['imagen']?>" alt="..." height="30px" width="auto"></td>
+              <td><a class="btn btn-warning" href="editar.php?id=<?=$val['categoria_ID']?>">Editar</a></td>
               <td><a class="btn btn-danger" href="borrar.php?id=<?=$val['categoria_ID']?>&req=delete">Borrar</a></td>
             </tr>
             <?php } ?>
@@ -128,8 +130,7 @@ $allData = $data->selectAll();
                 name="descripcion" 
                 class="form-control" 
                 cols="30" 
-                rows="10">
-                </textarea>
+                rows="10"></textarea>
               </div>
 
               <div class="mb-1 col-12">

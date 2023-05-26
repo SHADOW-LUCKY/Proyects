@@ -77,5 +77,22 @@ class Config{
             return $e -> getMessage();
         } 
     }
+    public function selectOne(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM categorias WHERE categoria_ID=?");
+            $stm->execute([$this->id]);
+            return $stm->fetch();
+        } catch (Exception $e) {
+            return $e -> getMessage();
+        }
+    }
+    public function update(){
+        try {          
+            $stm = $this->dbCnx->prepare("UPDATE categorias SET descripcion=?, imagen=? WHERE categoria_ID=?");
+            $stm->execute([$this->descripcion,$this->imagen,$this->id]);
+        } catch (Exception $e) {
+                    return $e -> getMessage();
+        }
+    }
 }
 ?>
