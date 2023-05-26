@@ -86,7 +86,6 @@ class Config{
         $stm = $this->dbCnx->prepare("UPDATE campers SET nombres=?,direcion=?,logros=? WHERE id=?");
         /* con que valores debe ejecutarse los comandos en prepare  */
         $stm->execute([$this->nombres, $this->direcion, $this->logros, $this->id]);
-        return $stm->rowCount();
         } catch (Exception $e) {
             return $e -> getMessage();/* si hay un error lo saca */
         }

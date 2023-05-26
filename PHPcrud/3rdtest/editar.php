@@ -7,7 +7,7 @@
     /* USO DE LA FUNCION SELECT ONE  con ña id que usamos antes*/
     $record = $data->selectOne();
     /* capturamos el valor del array de record */
-    $val = $record;
+    $val = $record[0];
     if(isset($_POST['editar'])){
         /* es importante distinguir los parametros  para saber que estamos mandando al flujo de datos*/
         $data->setNombre($_POST['categoria_nombre']);
@@ -67,8 +67,8 @@
                 <label for="nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="categoria_nombre"
+                  name="categoria_nombre"
                   class="form-control"  
                   value="<?php echo $val['categoria_nombre']?>"  
                 />

@@ -81,17 +81,17 @@ class Config{
         try {
             $stm = $this->dbCnx->prepare("SELECT * FROM categorias WHERE categoria_ID=?");
             $stm->execute([$this->id]);
-            return $stm->fetch();
+            return $stm->fetchAll();
         } catch (Exception $e) {
             return $e -> getMessage();
         }
     }
     public function update(){
         try {          
-            $stm = $this->dbCnx->prepare("UPDATE categorias SET descripcion=?, imagen=? WHERE categoria_ID=?");
-            $stm->execute([$this->descripcion,$this->imagen,$this->id]);
+            $stm = $this->dbCnx->prepare("UPDATE categorias SET categoria_nombre=?, descripcion=?, imagen=? WHERE categoria_ID=?");
+            $stm->execute([$this->nombre,$this->descripcion,$this->imagen,$this->id]);
         } catch (Exception $e) {
-                    return $e -> getMessage();
+            return $e -> getMessage();
         }
     }
 }
