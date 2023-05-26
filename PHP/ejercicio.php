@@ -1,61 +1,49 @@
 <?php
-abstract class Base{
-    /* base del pokemon */
-    protected $nombre;     
-    protected $tipo; 
-    protected $jerar; 
-    protected $region; 
-    protected $nivel; 
-    
-    public function __construct($nombre, $tipo, $jerar, $region, $nivel){
+abstract class Persona {
+    protected $nombre;    
+    protected $edad;
+    protected $genero;
+    protected $estado;
+    protected $birth;
+    public function __construct($nombre, $edad, $genero, $estado, $birth){
         $this->nombre = $nombre;
-        $this->tipo = $tipo;
-        $this->jerar = $jerar;
-        $this->region = $region;
-        $this->nivel = $nivel;
+        $this->edad = $edad;
+        $this->genero = $genero;
+        $this->estado = $estado;
+        $this->birth = $birth;
     }
 }
-
-class pokemon1/* Eevee  */extends Base{
-    /* base del pokemon */
-    protected $objeto;
-    protected $numevoluciones;
-
-    public function __construct($nombre, $tipo, $jerar, $region, $nivel, $objeto){
-        parent::__construct($nombre, $tipo, $jerar, $region, $nivel);
-        $this->objeto = $objeto;
-        $this->numevoluciones = $numevoluciones;
+class Niño extends Persona{
+    protected $tieneFamilia;
+    protected $tieneHermanos;
+    protected $grado;
+    public function __construct($tieneFamilia,$tieneHermanos,$grado){
+        parent::__construct($nombre, $edad, $genero, $estado, $birth);
+        $this -> tieneFamilia = $tieneFamilia;
+        $this -> tieneHermanos = $tieneHermanos;
+        $this -> grado = $grado;
     }
 }
-class pokemon2/* Pikachu  */extends Base{
-    /* base del pokemon */
-    protected $objeto;
-    protected $movimientoZ;
-    public function __construct($nombre, $tipo, $jerar, $region, $nivel, $objeto){
-        parent::__construct($nombre, $tipo, $jerar, $region, $nivel);
-        $this->objeto = $objeto;
-        $this->movimientoZ = $movimientoZ;
+class Adulto extends Persona{
+    protected $salario;
+    protected $independiente;
+    protected $trabajo;    
+    public function __construct($salario, $independiente, $trabajo){
+        parent::__construct($nombre, $edad, $genero, $estado, $birth);
+        $this->salario = $salario; 
+        $this->independiente = $independiente;
+        $this->trabajo = $trabajo;
     }
 }
-class pokemon3/* Garchomp */ extends Base{
-    /* base del pokemon */
-    protected $objeto;
-    protected $entrenador;
-    public function __construct($nombre, $tipo, $jerar, $region, $nivel, $objeto){
-        parent::__construct($nombre, $tipo, $jerar, $region, $nivel);
-        $this->objeto = $objeto;
-        $this->entrenador = $entrenador;
+class Anciano extends Persona{
+    protected $conPension;
+    protected $ancianato;
+    protected $seguroVida;
+    public function __construct($conPension, $ancianato, $seguroVida){
+        parent::__construct($nombre, $edad, $genero, $estado, $birth);
+        $this ->conPension= $conPension                 
+        $this ->ancianato= $ancianato             
+        $this ->seguroVida= $seguroVida                 
     }
 }
-class pokemon4/* Rattata  */extends Base{
-    /* base del pokemon */
-    protected $objeto;
-    protected $ubicacion;
-    public function __construct($nombre, $tipo, $jerar, $region, $nivel, $objeto){
-        parent::__construct($nombre, $tipo, $jerar, $region, $nivel);
-        $this->objeto = $objeto;
-        $this->ubicacion = $ubicacion;
-    }
-} 
 ?>
-
