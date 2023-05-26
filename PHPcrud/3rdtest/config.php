@@ -1,4 +1,9 @@
 <?php
+ini_set("display_errors", 1);
+
+ini_set("display_startup_errors", 1);
+
+error_reporting(E_ALL);
 require_once("db.php");
 class Config{
     private $id;
@@ -44,7 +49,8 @@ class Config{
     /* Funcion Subir */
     public function insertData(){
         try {
-            $stat=$this->dbCnx->prepare("INSERT INTO categorias(nombre,descripcion,imagen) VALUES(?,?,?)");
+            $stm=$this->dbCnx->prepare("INSERT INTO categorias(categoria_nombre,descripcion,imagen) VALUES(?,?,?)");
+            $stm->execute([$this->nombre,$this->descripcion,$this->imagen]);
         } catch (Exception $e) {
             return $e -> getMessage();
         }
@@ -53,12 +59,23 @@ class Config{
     public function selectAll(){
         try {
             /* seleccione todo lo que hay en la tabla */
-            $stat=$this->dbCnx->prepare("SELECT * FROM categorias");
-            $stat->execute();/* usamos los comandos de prepare */
+            $stm=$this->dbCnx->prepare("SELECT * FROM categorias");
+            $stm->execute();/* usamos los comandos de prepare */
             return $stm->fetchAll();
         } catch (Exception $e) {
             return $e -> getMessage();
         }
+    }
+    // funcion deletear
+    public function deleteSel(){
+        try {
+          $stm = $this->dbCnx->prepare("DELETE FROM categorias WHERE categoria_ID=?");
+          $stm->execute([$this->id]);
+          return $stm -> fetchAll();
+            //   para saber como esta la pagina ahora
+        } catch (Exception $e) {
+            return $e -> getMessage();
+        } 
     }
 }
 ?>

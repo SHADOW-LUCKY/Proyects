@@ -75,11 +75,11 @@ $allData = $data->selectAll();
               foreach($allData as $key => $val){
             ?>
             <tr>
-              <td><?php echo $val['id']?></td><!-- toca referirse a las filas -->
-              <td><?php echo $val['nombre']?></td>
+              <td><?php echo $val['categoria_ID']?></td><!-- toca referirse a las filas -->
+              <td><?php echo $val['categoria_nombre']?></td>
               <td><?php echo $val['descripcion']?></td>
-              <td><img src="<?php echo $val['imagen']?>" alt="..."></td>
-              <td><a class="btn btn-danger" href="borrar.php?id=<?=$val['id']?>&req=delete">Borrar</a></td>
+              <td><img src="<?php echo $val['imagen']?>" alt="..." height="30px" width="auto"></td>
+              <td><a class="btn btn-danger" href="borrar.php?id=<?=$val['categoria_ID']?>&req=delete">Borrar</a></td>
             </tr>
             <?php } ?>
           </tbody>
