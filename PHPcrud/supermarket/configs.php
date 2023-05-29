@@ -407,4 +407,82 @@ class Productos{
           } 
     }
 }
+class Venta{
+    /* variable */
+    private$id;
+    private$fecha;
+    private$empleado;
+    private$cliente;
+    protected $dbCnx;
+    /* constructor */
+    public function __construct($id=0,$fecha="",$empleado="",$cliente=""){
+        $this->id=$id;
+        $this->fecha=$fecha;
+        $this->empleado=$empleado;
+        $this->cliente=$cliente;
+        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+    }
+    /* setters */
+    public function setID($id){
+     $this->id=$id;
+    }
+    public function setFecha($fecha){
+     $this->fecha=$fecha;
+    }
+    public function setEmpleado($empleado){
+     $this->empleado=$empleado;
+    }
+    public function setCliente($cliente){
+     $this->cliente=$cliente;
+    }
+    /* getters */
+    public function getID(){
+        return $this->id;
+    }
+    public function getFecha(){
+        return $this->fecha;
+    }
+    public function getEmpleado(){
+        return $this->empleado;
+    }
+    public function getCliente(){
+        return $this->cliente;
+    }
+    /* metodos */
+    public function insertData(){
+        try {
+            $stat = $this->dbCnx->prepare("INSERT INTO facturas(empleado_ID,cliente_ID,fecha) VALUES(?,?,?)");
+            $stat -> execute([$this->empleado,$this->cliente,$this->fecha]);
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+    public function selectAll() {
+        try {
+            $stat=$this->dbCnx->prepare("SELECT * FROM facturas");
+            $stat->execute();
+            return $stat->fetchAll();
+        } catch (Exception $e) {
+            $e->getMessage();
+        } 
+    }
+    public function deleteSel(){
+        try {
+          $stat = $this->dbCnx->prepare("DELETE FROM facturas WHERE factura_ID=?");
+          $stat->execute([$this->id]);
+          return $stat -> fetchAll();
+            //   para saber como esta la pagina ahora
+        } catch (Exception $e) {
+            return $e -> getMessage();
+        } 
+    }
+}
+class VentaDetalle{
+    private $id;
+    private $factura;
+    private $procvendido;
+    
+    private $cantidad;
+    protected $dbCnx;
+}
 ?>

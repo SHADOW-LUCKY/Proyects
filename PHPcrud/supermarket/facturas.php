@@ -5,7 +5,7 @@ ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
 require_once("configs.php");
-$data = new Productos();/* creamos nueva clase de config */
+$data = new Venta();/* creamos nueva clase de config */
 $allData = $data->selectAll();
 /* sacamos los empleados*/
 $employee = new Empleados();
@@ -84,13 +84,13 @@ $allProductos = $productos->selectAll();
           <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Proveedor</th>
-            <th scope="col">Precio Unidad</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Unidades Pedidas</th>
-            <th scope="col">Descontinuado</th>
+            <th scope="col">Fecha expedicion</th>
+            <th scope="col">Empleado</th>
+            <th scope="col">Cliente(Comprador)</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad Ventas</th>
+            <th scope="col">Total</th>
+            <th scope="col">Detalles</th>
             <th scope="col">Borrar</th>
             </tr>
           </thead>
@@ -111,7 +111,7 @@ $allProductos = $productos->selectAll();
               <td><?php echo $val['unidades_pedidas']?></td>
               <td><?php echo $val['descontinuado']?></td>
                 
-              <td><a class="btn btn-danger" href="borrados.php?id=<?=$val['producto_ID']?>&req=deletepro">Borrar</a></td>
+              <td><a class="btn btn-danger" href="borrados.php?id=<?=$val['producto_ID']?>&req=deleteven">Borrar</a></td>
             </tr>
             <?php } ?>
           </tbody>
@@ -139,8 +139,7 @@ $allProductos = $productos->selectAll();
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo 
-            Producto</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva Venta</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
@@ -161,6 +160,13 @@ $allProductos = $productos->selectAll();
               <?php
                 foreach ($allClients as $key => $val) {?> 
                 <option value="<?php echo $val['cliente_ID']?>"><?php echo $val['cliente_company']?></option>
+              <?php } ?> 
+              </select>
+              <label for="nombre" class="form-label">Producto</label>
+              <select name="proveedor" id="proveedor" class="form-select mb-1">
+              <?php
+                foreach ($allProductos as $key => $val) {?> 
+                <option value="<?php echo $val['nombre_producto']?>"><?php echo $val['nombre_producto']?></option>
               <?php } ?> 
               </select>
               <div class="mb-1 col-12">
