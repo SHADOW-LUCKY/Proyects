@@ -39,8 +39,8 @@ CREATE TABLE productos(
         unidades_pedidas INT NOT NULL,
         nombre_producto VARCHAR(70) NOT NULL,
         descontinuado VARCHAR(2) NOT NULL,
-        Foreign Key (categoria_ID) REFERENCES categorias(categoria_ID),
-        Foreign Key (proveedor_ID) REFERENCES proveedores(proveedor_ID)
+        FOREIGN KEY (categoria_ID) REFERENCES categorias(categoria_ID),
+        FOREIGN KEY (proveedor_ID) REFERENCES proveedores(proveedor_ID)
     );
 
 CREATE TABLE facturaDetalle(
@@ -59,3 +59,5 @@ CREATE TABLE facturas(
         Foreign Key (empleado_ID) REFERENCES empleados(empleado_ID),
         Foreign Key (cliente_ID) REFERENCES clientes(cliente_ID)
     );
+
+DROP TABLE productos

@@ -22,6 +22,11 @@ if (isset($_GET['id'])&& isset($_GET['req'])) {
         $delete ->setID($_GET['id']);
         $delete ->deleteSel();
         echo"<script>alert('datos borrados');document.location='clientes.php';</script>";
+    }elseif($_GET['req']=="deleteemp"){
+        $delete = new Empleados();
+        $delete->setID($_GET['id']);
+        $delete->deleteSel();
+        echo"<script>alert('datos borrados');document.location='empleados.php';</script>";
     }
 }
 ?>

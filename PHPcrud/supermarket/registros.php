@@ -21,12 +21,20 @@ if(isset($_POST['guardar'])){
         $save->setCiudad($_POST['ciudad']);
         $save->insertData();
         echo"<script>alert('datos enviados');document.location='proveedores.php';</script>";
-    }elseif ($log=="clientes") {
+    }elseif($log=="clientes") {
         $save =new Clientes();
         $save->setTelefono($_POST['telefono']);
         $save->setCompany($_POST['empresa']);
         $save->insertData();
         echo"<script>alert('datos enviados');document.location='clientes.php';</script>";
+    }elseif($log=="empleados"){
+        $save =new Empleados();
+        $save->setNombre($_POST['nombre']);
+        $save->setCelular($_POST['telefono']);
+        $save->setDireccion($_POST['direccion']);
+        $save->setImagen($_POST['imagen']);
+        $save->insertData();
+        echo"<script>alert('datos enviados');document.location='empleados.php';</script>";
     }
 }
 
