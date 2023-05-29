@@ -41,9 +41,9 @@ class Anciano extends Persona{
     protected $seguroVida;
     public function __construct($conPension, $ancianato, $seguroVida){
         parent::__construct($nombre, $edad, $genero, $estado, $birth);
-        $this ->conPension= $conPension                 
-        $this ->ancianato= $ancianato             
-        $this ->seguroVida= $seguroVida                 
+        $this ->conPension= $conPension;
+        $this ->ancianato= $ancianato;
+        $this ->seguroVida= $seguroVida;
     }
 }
 ?>

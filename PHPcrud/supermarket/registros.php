@@ -35,6 +35,17 @@ if(isset($_POST['guardar'])){
         $save->setImagen($_POST['imagen']);
         $save->insertData();
         echo"<script>alert('datos enviados');document.location='empleados.php';</script>";
+    }elseif ($log =="productos"){ 
+        $save =new Productos();
+        $save->setNombre($_POST['nombre']);
+        $save->setCategoria($_POST['categoria']);
+        $save->setProveedor($_POST['proveedor']);
+        $save->setStock($_POST['stock']);
+        $save->setPreciounit($_POST['precioUnit']);
+        $save->setUnitspedidas($_POST['unitsPedidas']);
+        $save->setDescontinuado($_POST['descontinuado']);
+        $save->insertData();
+        echo"<script>alert('datos enviados');document.location='productos.php';</script>";
     }
 }
 

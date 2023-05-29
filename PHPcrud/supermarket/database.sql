@@ -46,6 +46,7 @@ CREATE TABLE productos(
 CREATE TABLE facturaDetalle(
         detalle_ID INT PRIMARY KEY AUTO_INCREMENT,
         factura_ID INT NOT NULL,
+        producto_vendido VARCHAR(60) NOT NULL,
         cantidad INT NOT NULL,
         precio FLOAT NOT NULL,
         Foreign Key (factura_ID) REFERENCES facturas(factura_ID)
@@ -60,4 +61,3 @@ CREATE TABLE facturas(
         Foreign Key (cliente_ID) REFERENCES clientes(cliente_ID)
     );
 
-DROP TABLE productos

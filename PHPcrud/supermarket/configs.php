@@ -13,7 +13,7 @@ class Categorias {
         $this->nombre= $nombre;
         $this->descripcion= $descripcion;
         $this->imagen= $imagen;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     // setters
     public function setID($id) {    
@@ -82,7 +82,7 @@ class Proveedores {
         $this->nombre= $nombre;
         $this->telefono= $telefono;
         $this->ciudad= $ciudad;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     // setters
     public function setID($id){
@@ -150,7 +150,7 @@ class Clientes{
         $this->id=$id;
         $this->telefono=$telefono;
         $this->company=$company;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     // setters
     public function setID($id){
@@ -215,7 +215,7 @@ class Empleados{
         $this->celular=$celular; 
         $this->direccion=$direccion; 
         $this->imagen=$imagen; 
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     #getters
     public function getId(){
@@ -304,7 +304,7 @@ class Productos{
         $this->stock=$stock;
         $this->unitsPedidas=$unitsPedidas;
         $this->descontinuado =$descontinuado;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     #setter for variables
     public function setID($id){
@@ -376,13 +376,35 @@ class Productos{
     }
     public function deleteSel(){
         try {
-          $stm = $this->dbCnx->prepare("DELETE FROM productos WHERE producto_ID=?");
-          $stm->execute([$this->id]);
-          return $stm -> fetchAll();
+          $stat = $this->dbCnx->prepare("DELETE FROM productos WHERE producto_ID=?");
+          $stat->execute([$this->id]);
+          return $stat -> fetchAll();
             //   para saber como esta la pagina ahora
         } catch (Exception $e) {
             return $e -> getMessage();
         } 
+    }
+    /* nombre categorias y proveedores */
+    public function nameCate($categoria){
+        try {
+            $stat = $this->dbCnx->prepare("SELECT categorias.categoria_nombre FROM categorias INNER JOIN productos ON categorias.categoria_ID = productos.categoria_ID  WHERE categorias.categoria_ID = ?");
+            $stat->execute([$categoria]);
+            return $stat->fetchColumn();
+              //   para saber como esta la pagina ahora
+          } catch (Exception $e) {
+              return $e -> getMessage();
+          } 
+
+    }
+    public function nameProv($proveedor){
+        try {
+            $stat = $this->dbCnx->prepare("SELECT proveedores.proveedor_nombre FROM proveedores INNER JOIN productos ON proveedores.proveedor_ID = productos.proveedor_ID WHERE proveedores.proveedor_ID = ?");
+            $stat->execute([$proveedor]);
+            return $stat->fetchColumn();
+              //   para saber como esta la pagina ahora
+          } catch (Exception $e) {
+              return $e -> getMessage();
+          } 
     }
 }
 ?>

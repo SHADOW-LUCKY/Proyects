@@ -7,12 +7,15 @@ error_reporting(E_ALL);
 require_once("configs.php");
 $data = new Productos();/* creamos nueva clase de config */
 $allData = $data->selectAll();
-/* sacamos las categorias*/
-$category = new Categorias();
-$allCategory = $category->selectAll();
+/* sacamos los empleados*/
+$employee = new Empleados();
+$allEmployee = $employee->selectAll();
 /* sacamos los proveedores*/
-$provider = new Proveedores();
-$allProvider = $provider->selectAll();
+$clients = new Clientes();
+$allClients = $clients->selectAll();
+/* sacamos el productos */
+$productos = new Productos();
+$allProductos = $productos->selectAll();
 ?>
 <!DOCTYPE html>
 <html>
@@ -73,7 +76,7 @@ $allProvider = $provider->selectAll();
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Productos</h2>
+        <h2>Facturas</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -143,42 +146,31 @@ $allProvider = $provider->selectAll();
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
             <form class="col d-flex flex-wrap" method="post" action="registros.php">
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
-               <input type="text" id="nombre" name="nombre" class="form-control" >
+                <label for="nombre" class="form-label">Fecha Expedicion</label>
+               <input type="date" id="fecha" name="fecha" class="form-control" >
               </div>
-              <label for="nombre" class="form-label">Categoria</label>
-              <select name="categoria" id="categoria" class="form-select mb-1">
+              <label for="nombre" class="form-label">Empleado Responsable</label>
+              <select name="empleado" id="empleado" class="form-select mb-1">
               <?php
-                foreach ($allCategory as $key => $val) {?> 
-                <option value="<?php echo $val['categoria_ID']?>"><?php echo $val['categoria_nombre']?></option>
+                foreach ($allEmployee as $key => $val) {?> 
+                <option value="<?php echo $val['empleado_ID']?>"><?php echo $val['empleado_nombre']?></option>
               <?php } ?> 
               </select>
-              <label for="nombre" class="form-label">Proveedor</label>
+              <label for="nombre" class="form-label">Cliente Pedido</label>
               <select name="proveedor" id="proveedor" class="form-select mb-1">
               <?php
-                foreach ($allProvider as $key => $val) {?> 
-                <option value="<?php echo $val['proveedor_ID']?>"><?php echo $val['proveedor_nombre']?></option>
+                foreach ($allClients as $key => $val) {?> 
+                <option value="<?php echo $val['cliente_ID']?>"><?php echo $val['cliente_company']?></option>
               <?php } ?> 
               </select>
               <div class="mb-1 col-12">
-              <label for="nombre" class="form-label">Stock</label>
+              <label for="nombre" class="form-label">Cantidad</label>
               <input type="number" name="stock" id="stock" class="form-control">
               </div>
              <div class="mb-1 col-12">
-             <label for="nombre" class="form-label">Precio unidad</label>   
+             <label for="nombre" class="form-label">Precio Total</label>   
               <input type="number" name="precioUnit" id="precioUnit" class="form-control">
-             </div>
-             <div class="mb-1 col-12">
-             <label for="nombre" class="form-label">Unidades Pedidas</label>   
-              <input type="number" name="unitsPedidas" id="unitsPedidas" class="form-control">
-             </div>
-             <div class="mb-1 col-12">
-              <label for="">Esta descontinuado?</label>
-                  <select name="descontinuado" id="descontinuado" class="form-select">
-                      <option value="no">No</option>
-                      <option value="si">Si</option>
-                  </select>
-             </div>  
+             </div> 
               <div class=" col-12 m-2">
                 <button type="submit" class="btn btn-primary" value="productos" name="guardar">Agregar Producto</button>
               </div>
