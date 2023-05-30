@@ -61,3 +61,4 @@ CREATE TABLE facturas(
         Foreign Key (cliente_ID) REFERENCES clientes(cliente_ID)
     );
 
+DROP DATABASE supermarket;

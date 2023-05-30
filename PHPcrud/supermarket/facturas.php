@@ -102,43 +102,10 @@ $allProductos = $productos->selectAll();
               <td><?php echo $val['fecha']?></td>
               <td><?php echo $val['empleado_ID']?></td>
               <td><?php echo $val['cliente_ID']?></td>
-              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<?php echo $val['factura_ID']?>">detalle</button></td>
+              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?php echo $val['factura_ID']?>">detalle</button></td>
               <td><a class="btn btn-danger" href="borrados.php?id=<?=$val['factura_ID']?>&req=deletecate">Borrar</a></td>
             </tr>
                 
-            <?php }  ?>
-            <?php
-              foreach($allDetails as $key => $val){ 
-            ?>
-
-              
-            <div class="modal fade" id="<?php echo $val['factura_ID']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-             <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                      <tr>
-                          <th scope="col">Producto</th>
-                          <th scope="col">Cantidad Ventas</th>
-                          <th scope="col">Total</th>
-                        </tr>
-                        <tr>
-                          <td><?php echo $val['producto_vendido']?></td>
-                          <td><?php echo $val['cantidad']?></td>
-                          <td><?php echo $val['precio']?></td>
-                        </tr>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          
             <?php }  ?>
           </tbody>
         
@@ -213,7 +180,46 @@ $allProductos = $productos->selectAll();
         </div>
       </div>
     </div>
+    <!--modales  -->
+    <?php
+              foreach($allDetails as $key => $val){ 
+            ?>
 
+              
+            <div class="modal fade" id="modal<?php echo $val['factura_ID']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <table class="table table-custom">
+                      <thead>
+                      <tr>
+                          <th scope="col">Producto</th>
+                          <th scope="col">Cantidad Ventas</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                        <tbody>
+                        <tr>
+                          <td><?php echo $val['producto_vendido']?></td>
+                          <td><?php echo $val['cantidad']?></td>
+                          <td><?php echo $val['precio']?></td>
+                        </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          
+            <?php }  ?> 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

@@ -51,12 +51,12 @@ if(isset($_POST['guardar'])){
         $save->setFecha($_POST['fecha']);
         $save->setEmpleado($_POST['empleado']);
         $save->setCliente($_POST['cliente']);
+        $save->insertData();
         $facID = $save->getLastID();
         $save->setFactura($facID);
         $save->setProcvendido($_POST['producto']);
         $save->setCantidad($_POST['cantidad']);
         $save->setPrecio($_POST['total']);
-        $save->insertData();
         $save->insertDatafac();
         echo"<script>alert('datos enviados');document.location='facturas.php';</script>";
     }

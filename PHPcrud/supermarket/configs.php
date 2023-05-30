@@ -520,7 +520,7 @@ class Venta{
     }
     /* metodos factura */
     public function getLastID(){
-        $stat = $this->dbCnx->prepare("SELECT MAX(categoria_ID) FROM categorias;");
+        $stat = $this->dbCnx->prepare("SELECT MAX(factura_ID) FROM facturas;");
         $stat->execute();
         return $stat->fetchColumn();
     }
