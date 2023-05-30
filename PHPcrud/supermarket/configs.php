@@ -413,13 +413,23 @@ class Venta{
     private$fecha;
     private$empleado;
     private$cliente;
+    private$idfac;
+    private$factura;
+    private$procvendido;
+    private$cantidad;
+    private$precio;
     protected $dbCnx;
     /* constructor */
-    public function __construct($id=0,$fecha="",$empleado="",$cliente=""){
+    public function __construct($id=0,$fecha="",$empleado="",$cliente="",$idfac=0 , $factura=0,$procvendido="",$cantidad=0,$precio=0){
         $this->id=$id;
         $this->fecha=$fecha;
         $this->empleado=$empleado;
         $this->cliente=$cliente;
+        $this->idfac=$idfac;
+        $this->factura=$factura;
+        $this->procvendido=$procvendido;
+        $this->cantidad=$cantidad;
+        $this->precio=$precio;
         $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     }
     /* setters */
@@ -435,6 +445,22 @@ class Venta{
     public function setCliente($cliente){
      $this->cliente=$cliente;
     }
+    /* setters factura */
+    public function setIDfac($idfac){
+        $this->id=$id;
+       }
+       public function setFactura($factura){
+        $this->factura=$factura;
+       }
+       public function setProcvendido($procvendido){
+        $this->procvendido=$procvendido;
+       }
+       public function setCantidad($cantidad){
+        $this->cantidad=$cantidad;
+       }
+       public function setPrecio($precio){
+        $this->precio=$precio;
+       }
     /* getters */
     public function getID(){
         return $this->id;
@@ -448,6 +474,22 @@ class Venta{
     public function getCliente(){
         return $this->cliente;
     }
+    /* getters factura */
+    public function getIDfac(){
+        return $this->idfac;
+       }
+       public function getFactura(){
+        return $this->factura;
+       }
+       public function getProcvendido(){
+        return $this->procvendido;
+       }
+       public function getCantidad(){
+        return $this->cantidad;
+       }
+       public function getPrecio(){
+        return $this->precio;
+       }
     /* metodos */
     public function insertData(){
         try {
@@ -476,13 +518,38 @@ class Venta{
             return $e -> getMessage();
         } 
     }
+    /* metodos factura */
+    public function getLastID(){
+        $stat = $this->dbCnx->prepare("SELECT MAX(categoria_ID) FROM categorias;");
+        $stat->execute();
+        return $stat->fetchColumn();
+    }
+    public function insertDatafac(){
+        try {
+            $stat = $this->dbCnx->prepare("INSERT INTO facturaDetalle(factura_ID,producto_vendido,cantidad,precio) VALUES(?,?,?,?)");
+            $stat -> execute([$this->factura,$this->procvendido,$this->cantidad,$this->precio]);
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+    public function selectAllfac() {
+        try {
+            $stat = $this->dbCnx->prepare("SELECT * FROM facturaDetalle");
+            $stat->execute();
+            return $stat->fetchAll();
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+    public function deleteSelfac(){
+        try {
+          $stat = $this->dbCnx->prepare("DELETE FROM facturaDetalle WHERE detalle_ID=?");
+          $stat->execute([$this->id]);
+          return $stat -> fetchAll();
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
 }
-class VentaDetalle{
-    private $id;
-    private $factura;
-    private $procvendido;
-    
-    private $cantidad;
-    protected $dbCnx;
-}
+
 ?>

@@ -93,4 +93,59 @@ class Estudiantes extends Conectar{
         }
     }
 }
+class Register extends Conectar{
+    private $id;
+    private $id_camper;
+    private $email;
+    private $username;
+    private $password;
+    public function __construct($id=0,$id_camper=0, $email="", $username="", $password="",$dbCnx=""){
+        $this->id = $id;
+        $this->id_camper = $id_camper;
+        $this->email = $email;
+        $this->username = $username;
+        $this->password = $password;
+        parent::__construct($dbCnx);
+    }    
+    /* setters & getters*/
+    public function setId($id){
+        $this->id = $id;
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function setEmail($email){
+        $this->email = $email;
+    }
+    public function getEmail(){
+        return $this->email;
+    }
+    public function setUsername($username){
+        $this->username = $username;
+    }
+    public function getUsername(){
+        return $this->username;
+    }
+    public function setPassword($password){
+        $this->password = $password;
+    }
+    public function getPassword(){
+        return $this->password;
+    }
+    public function setIdcamper($id_camper){
+        $this->id_camper = $id_camper;
+    }
+    public function getIdcamper(){
+        return $this->id_camper;
+    }
+    /* metodos */
+    public function insertData(){
+        try {
+            $stat = $this->dbCnx->prepare("INSERT INTO users(ID_camper,username,email,password) VALUES(?,?,?,?)");
+            $stat -> execute([$this->id_camper,$this->username,$this->email,md5($this->password)]);
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+}
 ?>

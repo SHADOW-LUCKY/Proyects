@@ -46,6 +46,19 @@ if(isset($_POST['guardar'])){
         $save->setDescontinuado($_POST['descontinuado']);
         $save->insertData();
         echo"<script>alert('datos enviados');document.location='productos.php';</script>";
+    }elseif ($log =="facturas") {
+        $save =new Venta();
+        $save->setFecha($_POST['fecha']);
+        $save->setEmpleado($_POST['empleado']);
+        $save->setCliente($_POST['cliente']);
+        $facID = $save->getLastID();
+        $save->setFactura($facID);
+        $save->setProcvendido($_POST['producto']);
+        $save->setCantidad($_POST['cantidad']);
+        $save->setPrecio($_POST['total']);
+        $save->insertData();
+        $save->insertDatafac();
+        echo"<script>alert('datos enviados');document.location='facturas.php';</script>";
     }
 }
 

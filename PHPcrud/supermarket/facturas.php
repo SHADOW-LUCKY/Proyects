@@ -7,6 +7,7 @@ error_reporting(E_ALL);
 require_once("configs.php");
 $data = new Venta();/* creamos nueva clase de config */
 $allData = $data->selectAll();
+$allDetails = $data->selectAllfac();
 /* sacamos los empleados*/
 $employee = new Empleados();
 $allEmployee = $employee->selectAll();
@@ -87,33 +88,58 @@ $allProductos = $productos->selectAll();
             <th scope="col">Fecha expedicion</th>
             <th scope="col">Empleado</th>
             <th scope="col">Cliente(Comprador)</th>
-            <th scope="col">Producto</th>
-            <th scope="col">Cantidad Ventas</th>
-            <th scope="col">Total</th>
-            <th scope="col">Detalles</th>
+            <th scope="col">Detalle</th>
             <th scope="col">Borrar</th>
             </tr>
           </thead>
           <tbody class="" id="tabla">
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <?php
-              foreach($allData as $key => $val){
-                $namecate = $data->nameCate($val['categoria_ID']);
-                $nameprov = $data->nameProv($val['proveedor_ID']);
+              foreach($allData as $key => $val){ 
             ?>
             <tr>
-              <td><?php echo $val['producto_ID']?></td><!-- toca referirse a las filas -->
-              <td><?php echo $val['nombre_producto']?></td>
-              <td><?php echo $namecate?></td>
-              <td><?php echo $nameprov?></td>
-              <td><?php echo $val['precioUnit']?></td>
-              <td><?php echo $val['stock']?></td>
-              <td><?php echo $val['unidades_pedidas']?></td>
-              <td><?php echo $val['descontinuado']?></td>
-                
-              <td><a class="btn btn-danger" href="borrados.php?id=<?=$val['producto_ID']?>&req=deleteven">Borrar</a></td>
+              <td><?php echo $val['factura_ID']?></td>
+              <td><?php echo $val['fecha']?></td>
+              <td><?php echo $val['empleado_ID']?></td>
+              <td><?php echo $val['cliente_ID']?></td>
+              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#<?php echo $val['factura_ID']?>">detalle</button></td>
+              <td><a class="btn btn-danger" href="borrados.php?id=<?=$val['factura_ID']?>&req=deletecate">Borrar</a></td>
             </tr>
-            <?php } ?>
+                
+            <?php }  ?>
+            <?php
+              foreach($allDetails as $key => $val){ 
+            ?>
+
+              
+            <div class="modal fade" id="<?php echo $val['factura_ID']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+             <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <tr>
+                          <th scope="col">Producto</th>
+                          <th scope="col">Cantidad Ventas</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                        <tr>
+                          <td><?php echo $val['producto_vendido']?></td>
+                          <td><?php echo $val['cantidad']?></td>
+                          <td><?php echo $val['precio']?></td>
+                        </tr>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          
+            <?php }  ?>
           </tbody>
         
         </table>
@@ -129,7 +155,9 @@ $allProductos = $productos->selectAll();
        <!-- ///////Generando la grafica -->
 
     </div>
+    
 
+<!-- Modal -->
 
 
 
@@ -156,14 +184,14 @@ $allProductos = $productos->selectAll();
               <?php } ?> 
               </select>
               <label for="nombre" class="form-label">Cliente Pedido</label>
-              <select name="proveedor" id="proveedor" class="form-select mb-1">
+              <select name="cliente" id="cliente" class="form-select mb-1">
               <?php
                 foreach ($allClients as $key => $val) {?> 
                 <option value="<?php echo $val['cliente_ID']?>"><?php echo $val['cliente_company']?></option>
               <?php } ?> 
               </select>
               <label for="nombre" class="form-label">Producto</label>
-              <select name="proveedor" id="proveedor" class="form-select mb-1">
+              <select name="producto" id="producto" class="form-select mb-1">
               <?php
                 foreach ($allProductos as $key => $val) {?> 
                 <option value="<?php echo $val['nombre_producto']?>"><?php echo $val['nombre_producto']?></option>
@@ -171,14 +199,14 @@ $allProductos = $productos->selectAll();
               </select>
               <div class="mb-1 col-12">
               <label for="nombre" class="form-label">Cantidad</label>
-              <input type="number" name="stock" id="stock" class="form-control">
+              <input type="number" name="cantidad" id="cantidad" class="form-control">
               </div>
              <div class="mb-1 col-12">
-             <label for="nombre" class="form-label">Precio Total</label>   
-              <input type="number" name="precioUnit" id="precioUnit" class="form-control">
+             <label for="nombre" class="form-label">Precio venta</label>   
+              <input type="number" name="total" id="total" class="form-control">
              </div> 
               <div class=" col-12 m-2">
-                <button type="submit" class="btn btn-primary" value="productos" name="guardar">Agregar Producto</button>
+                <button type="submit" class="btn btn-primary" value="facturas" name="guardar">Agregar Producto</button>
               </div>
             </form>  
          </div>       
