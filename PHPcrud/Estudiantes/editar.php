@@ -1,6 +1,6 @@
 <?php
     require_once("config.php");
-    $data = new Config();
+    $data = new Estudiantes();
     /* dato obtenido */
     $id =$_GET['id'];
     $data->setID($id);

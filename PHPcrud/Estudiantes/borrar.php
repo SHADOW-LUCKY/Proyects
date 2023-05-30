@@ -5,7 +5,7 @@ ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
     require_once ("config.php");
-    $record = new Config();
+    $record = new Estudiantes();
     if (isset($_GET['id'])&& isset($_GET['req'])){
         if (isset($_GET['req'])== "delete"){
             $record->setID($_GET['id']);

@@ -7,7 +7,7 @@ error_reporting(E_ALL);
     if(isset($_POST['guardar'])){
         require_once("config.php");
         /* nuevo archivo config */
-        $config = new Config();
+        $config = new Estudiantes();
         /* instancias */
         $config-> setNombres($_POST['nombres']);
         $config-> setDirecion($_POST['direcion']);

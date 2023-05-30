@@ -1,6 +1,7 @@
 <?php
-require_once("db.php");
-class Config{
+require_once("./config/db.php");
+require_once("./config/conectar.php");
+class Estudiantes extends Conectar{
     /* parametros */
     private $id;
     private $nombres;
@@ -8,13 +9,14 @@ class Config{
     private $logros;
     protected $dbCnx;
     /* configuracion */
-    public function __construct($id=0, $nombres="", $direcion="", $logros=""){
+    public function __construct($id=0, $nombres="", $direcion="", $logros="",$dbcnx=""){
         $this->id = $id;
         $this->nombres = $nombres;
         $this->direcion = $direcion;
         $this->logros = $logros;
+        parent::__construct($dbCnx);
         /* linkeada a la base de datos */
-        $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+    /*     $this->dbCnx = new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]); */
     }
     /* setters y getters */
     public function setID($id) {
