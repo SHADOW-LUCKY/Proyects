@@ -30,7 +30,7 @@ require_once("config.php");
             /* insertar datos */
             $config->insertData(); 
         /* verificado si funciona */
-            echo"<script>alert('Registro hecho');document.location='./Home/home.html'</script>";
+            echo"<script>alert('Registro hecho');document.location='./Home/home.php'</script>";
         }
     }elseif (isset($_POST['loguearse'])) {/* login y entrar */
         session_start();

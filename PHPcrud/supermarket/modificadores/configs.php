@@ -1,6 +1,6 @@
 <?php
-require_once("db.php");
-class Categorias {
+require_once("../conexion/conexion.php");
+class Categorias extends Conectar{
     // variables 
     private $id;
     private $nombre;
@@ -8,12 +8,12 @@ class Categorias {
     private $imagen;
     protected $dbCnx;
     // constructor
-    public function __construct($id=0, $nombre="", $descripcion="", $imagen=""){
+    public function __construct($id=0, $nombre="", $descripcion="", $imagen="",$dbCnx=""){
         $this->id= $id;
         $this->nombre= $nombre;
         $this->descripcion= $descripcion;
         $this->imagen= $imagen;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+        parent::__construct($dbCnx);
     }
     // setters
     public function setID($id) {    
@@ -69,7 +69,7 @@ class Categorias {
         } 
     }
 }
-class Proveedores {
+class Proveedores extends Conectar{
     // variables
     private $id;
     private $nombre;
@@ -77,12 +77,12 @@ class Proveedores {
     private $ciudad;
     protected $dbCnx;
     // constructor
-    public function __construct($id=0, $nombre="", $telefono="", $ciudad=""){
+    public function __construct($id=0, $nombre="", $telefono="", $ciudad="",$dbCnx=""){
         $this->id= $id;
         $this->nombre= $nombre;
         $this->telefono= $telefono;
         $this->ciudad= $ciudad;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+       parent::__construct($dbCnx);
     }
     // setters
     public function setID($id){
@@ -139,7 +139,7 @@ class Proveedores {
         } 
     }
 }
-class Clientes{
+class Clientes extends Conectar{
     // variables
     private$id;
     private$telefono;
@@ -150,7 +150,7 @@ class Clientes{
         $this->id=$id;
         $this->telefono=$telefono;
         $this->company=$company;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+       parent::__construct($dbCnx);
     }
     // setters
     public function setID($id){
@@ -201,7 +201,7 @@ class Clientes{
         } 
     }
 }
-class Empleados{
+class Empleados extends Conectar{
     private $id;
     private $nombre;
     private $celular;
@@ -209,13 +209,13 @@ class Empleados{
     private $imagen;
     protected $dbCnx;
 
-    public function __construct($id =0, $nombre = "", $celular = "", $direccion ="",$imagen =""){
+    public function __construct($id =0, $nombre = "", $celular = "", $direccion ="",$imagen ="",$dbCnx=""){
         $this->id=$id; 
         $this->nombre=$nombre; 
         $this->celular=$celular; 
         $this->direccion=$direccion; 
         $this->imagen=$imagen; 
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+       parent::__construct($dbCnx);
     }
     #getters
     public function getId(){
@@ -283,7 +283,7 @@ class Empleados{
     }
   
 }
-class Productos{
+class Productos extends Conectar{
     #variables
     private $id;
     private $nombre;
@@ -295,7 +295,7 @@ class Productos{
     private $descontinuado;
     protected $dbCnx;
     #constructor
-    public function __construct($id=0, $nombre="", $categoria=0, $proveedor=0, $precioUnit=0, $stock=0, $unitsPedidas=0, $descontinuado=""){
+    public function __construct($id=0, $nombre="", $categoria=0, $proveedor=0, $precioUnit=0, $stock=0, $unitsPedidas=0, $descontinuado="",$dbCnx=""){
         $this->id=$id;
         $this->nombre=$nombre;
         $this->categoria=$categoria;
@@ -304,7 +304,7 @@ class Productos{
         $this->stock=$stock;
         $this->unitsPedidas=$unitsPedidas;
         $this->descontinuado =$descontinuado;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+       parent::__construct($dbCnx);
     }
     #setter for variables
     public function setID($id){
@@ -407,7 +407,7 @@ class Productos{
           } 
     }
 }
-class Venta{
+class Venta extends Conectar{
     /* variable */
     private$id;
     private$fecha;
@@ -420,7 +420,7 @@ class Venta{
     private$precio;
     protected $dbCnx;
     /* constructor */
-    public function __construct($id=0,$fecha="",$empleado="",$cliente="",$idfac=0 , $factura=0,$procvendido="",$cantidad=0,$precio=0){
+    public function __construct($id=0,$fecha="",$empleado="",$cliente="",$idfac=0 , $factura=0,$procvendido="",$cantidad=0,$precio=0,$dbCnx=""){
         $this->id=$id;
         $this->fecha=$fecha;
         $this->empleado=$empleado;
@@ -430,7 +430,7 @@ class Venta{
         $this->procvendido=$procvendido;
         $this->cantidad=$cantidad;
         $this->precio=$precio;
-        $this->dbCnx=new PDO(DB_TYPE.":host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PWD, [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+       parent::__construct($dbCnx);
     }
     /* setters */
     public function setID($id){
@@ -518,6 +518,29 @@ class Venta{
             return $e -> getMessage();
         } 
     }
+    /* metodos inner join */
+    public function nameEmp($empleado){
+        try {
+            $stat = $this->dbCnx->prepare("SELECT empleados.empleado_nombre FROM empleados INNER JOIN productos ON empleados.empleado_ID = productos.empleado_ID  WHERE empleados.empleado_ID = ?");
+            $stat->execute([$empleado]);
+            return $stat->fetchColumn();
+              //   para saber como esta la pagina ahora
+          } catch (Exception $e) {
+              return $e -> getMessage();
+          } 
+
+    }
+    public function nameCli($cliente){
+        try {
+            $stat = $this->dbCnx->prepare("SELECT clientes.cliente_nombre FROM clientes INNER JOIN productos ON clientes.cliente_ID = productos.cliente_ID  WHERE clientes.cliente_ID = ?");
+            $stat->execute([$cliente]);
+            return $stat->fetchColumn();
+              //   para saber como esta la pagina ahora
+          } catch (Exception $e) {
+              return $e -> getMessage();
+          } 
+
+    }
     /* metodos factura */
     public function getLastID(){
         $stat = $this->dbCnx->prepare("SELECT MAX(factura_ID) FROM facturas;");
@@ -551,5 +574,7 @@ class Venta{
         }
     }
 }
+class Registro extends conectar{
 
+}
 ?>

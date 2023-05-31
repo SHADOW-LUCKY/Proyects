@@ -205,11 +205,13 @@ class LoginUser extends Conectar{
         $stat=$this->dbCnx->prepare("SELECT * FROM users WHERE email=? AND password=?",);
         $stat->execute([$this->email,md5($this->password)]);
         $user = $stat->fetchAll();
+        echo $user;
         if(count($user)>0){
             session_start();
             $_SESSION['id'] = $user[0]['id'];
             $_SESSION['email'] = $user[0]['email'];
             $_SESSION['password'] = $user[0]['password'];
+            $_SESSION['username'] = $user[0]['username'];
             return true;
         }else{
             false;

@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
-require_once("configs.php");
+require_once("modificadores/configs.php");
 $data = new Empleados();/* creamos nueva clase de config */
 $allData = $data->selectAll();
 ?>
@@ -93,7 +93,7 @@ $allData = $data->selectAll();
               <td><?php echo $val['empleado_direccion']?></td>
               <td><img src="<?php echo $val['empleado_imagen']?>" alt="..." height="30px" width="auto"></td>
                 
-              <td><a class="btn btn-danger" href="borrados.php?id=<?=$val['empleado_ID']?>&req=deleteemp">Borrar</a></td>
+              <td><a class="btn btn-danger" href="modificadores/borrados.php?id=<?=$val['empleado_ID']?>&req=deleteemp">Borrar</a></td>
             </tr>
             <?php } ?>
           </tbody>
@@ -126,7 +126,7 @@ $allData = $data->selectAll();
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post" action="registros.php">
+            <form class="col d-flex flex-wrap" method="post" action="modificadores/registros.php">
               <div class="mb-1 col-12">
                 <label for="nombre" class="form-label">Nombre</label>
                <input type="text" id="nombre" name="nombre" class="form-control" >
