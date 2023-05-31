@@ -21,13 +21,13 @@
             <img src="img/camper.png" alt="" class="logo"></div>
             <div class="d-flex justify-content-center align-items-center"><h1 style="font-weight: 800;">BIENVENIDOS</h1></div>
             <div  class="d-flex justify-content-center align-items-center" >
-                <form>
+                <form action="registrar.php" method="post">
                     <div class="mb-3">
                     <label for="campo" class="form-label">Usuario</label>
                         <input 
                           type="text"
-                          id="usuario"
-                          name="usuario"
+                          id="email"
+                          name="email"
                           class="form-control"  
                         />
                       <div id="emailHelp" class="form-text">Mañana es una excusa maravillosa, ¿No crees?</div>

@@ -1,6 +1,6 @@
 <?php
-require_once("./config/db.php");
-require_once("./config/conectar.php");
+require_once("config/db.php");
+require_once("config/conectar.php");
 class Estudiantes extends Conectar{
     /* parametros */
     private $id;
@@ -139,6 +139,19 @@ class Register extends Conectar{
         return $this->id_camper;
     }
     /* metodos */
+    public function checkUser($email){
+        try{
+            $stat = $this->dbCnx->prepare("SELECT * FROM users WHERE email='$email'");
+            $stat->execute();
+            if($stat->fetchColumn())/* si devuelve algo significa que es verdad*/{
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception $e) {
+            return $e -> getMessage();/* si hay un error lo saca */
+        }
+    }
     public function insertData(){
         try {
             $stat = $this->dbCnx->prepare("INSERT INTO users(ID_camper,username,email,password) VALUES(?,?,?,?)");
@@ -146,6 +159,64 @@ class Register extends Conectar{
         } catch (Exception $e) {
             $e->getMessage();
         }
+    }  
+}
+class LoginUser extends Conectar{
+    private $id;
+    private $email;
+    private $password;
+    public function __construct($id=0, $email="", $password="",$dbCnx=""){
+        $this->id = $id;
+        $this->email = $email;
+        $this->password = $password;
+        parent::__construct($dbCnx);
+    }    
+    /* setters & getters*/
+    public function setId($id){
+        $this->id = $id;
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function setEmail($email){
+        $this->email = $email;
+    }
+    public function getEmail(){
+        return $this->email;
+    }
+    public function setPassword($password){
+        $this->password = $password;
+    }
+    public function getPassword(){
+        return $this->password;
+    }
+    /* metodos */
+    public function fetchAll(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM users");/* prepara una sentencia(el * se refiere a todos ) */
+            $stm->execute();/* ejecuta las sentencias en prepare */
+            return $stm->fetchAll();/* metodo que saca todo(palabar reservada para PDO) */
+        } catch (Exception $e) {
+            return $e -> getMessage();/* si hay un error lo saca */
+        }
+    }
+    public function login(){
+      try{
+        $stat=$this->dbCnx->prepare("SELECT * FROM users WHERE email=? AND password=?",);
+        $stat->execute([$this->email,md5($this->password)]);
+        $user = $stat->fetchAll();
+        if(count($user)>0){
+            session_start();
+            $_SESSION['id'] = $user[0]['id'];
+            $_SESSION['email'] = $user[0]['email'];
+            $_SESSION['password'] = $user[0]['password'];
+            return true;
+        }else{
+            false;
+        }
+      }catch (Exception $e){
+        return $e->getMessage();
+      }
     }
 }
 ?>

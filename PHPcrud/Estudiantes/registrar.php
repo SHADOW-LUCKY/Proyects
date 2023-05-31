@@ -23,10 +23,28 @@ require_once("config.php");
         $config->setUsername($_POST['user']);
         $config->setPassword($_POST['password']);
         $config->setEmail($_POST['email']);
-
-        /* insertar datos */
-        $config->insertData(); 
+        /* verificar */
+        if($config->checkUser($_POST['email'])){
+            echo"<script>alert('usted ya esta en la base de datos mi loco');document.location='loginRegister.php'</script>";
+        }else{
+            /* insertar datos */
+            $config->insertData(); 
         /* verificado si funciona */
-        echo"<script>alert('Registro hecho');document.location='loginRegister.php'</script>";
+            echo"<script>alert('Registro hecho');document.location='./Home/home.html'</script>";
+        }
+    }elseif (isset($_POST['loguearse'])) {/* login y entrar */
+        session_start();
+        $credenciales= new loginUser();
+        /* nuevo login */
+        $credenciales->setEmail($_POST['email']);
+        $credenciales->setPassword($_POST['password']);
+        /* sacamos los valores */
+        $login= $credenciales->login();
+        /* verificamos */
+        if($login){
+            header('location:./Home/home.html');
+        }else{
+            echo"<script>alert('password o email invalidos');document.location='loginRegister.php';</script>";
+        }
     }
 ?>
