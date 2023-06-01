@@ -42,7 +42,7 @@ require_once("config.php");
         $login= $credenciales->login();
         /* verificamos */
         if($login){
-            header('location:./Home/home.html');
+            header('location:./Home/home.php');
         }else{
             echo"<script>alert('password o email invalidos');document.location='loginRegister.php';</script>";
         }

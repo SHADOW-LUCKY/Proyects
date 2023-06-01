@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
-require_once("modificadores/configs.php");
+require_once("configs.php");
 $data = new Venta();/* creamos nueva clase de config */
 $allData = $data->selectAll();
 $allDetails = $data->selectAllfac();
@@ -48,6 +48,10 @@ $allProductos = $productos->selectAll();
         <h3>LUCKY</h3>
       </div>
       <div class="menus">
+      <a href="Home/home.php" style="display: flex;gap:2px;">
+          <i class="bi bi-house-door"> </i>
+          <h3 style="margin: 0px;font-weight: 800;">Home</h3>
+        </a>
         <a href="categorias.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="">Categorias</h3>
@@ -96,14 +100,16 @@ $allProductos = $productos->selectAll();
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <?php
               foreach($allData as $key => $val){ 
+                $nameemp = $data->nameEmp($val['empleado_ID']);
+                $namecli = $data->nameCli($val['cliente_ID']);
             ?>
             <tr>
               <td><?php echo $val['factura_ID']?></td>
               <td><?php echo $val['fecha']?></td>
-              <td><?php echo $val['empleado_ID']?></td>
-              <td><?php echo $val['cliente_ID']?></td>
+              <td><?php echo $nameemp?></td>
+              <td><?php echo $namecli?></td>
               <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?php echo $val['factura_ID']?>">detalle</button></td>
-              <td><a class="btn btn-danger" href="modificadores/borrados.php?id=<?=$val['factura_ID']?>&req=deletecate">Borrar</a></td>
+              <td><a class="btn btn-danger" href="modificadores/borrados.php?id=<?=$val['factura_ID']?>&req=deletefact">Borrar</a></td>
             </tr>
                 
             <?php }  ?>
@@ -190,7 +196,7 @@ $allProductos = $productos->selectAll();
              <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">

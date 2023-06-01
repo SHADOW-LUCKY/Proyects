@@ -21,7 +21,7 @@
             <img src="img/supermarkets.png" alt="" class="logo"></div>
             <div class="d-flex justify-content-center align-items-center"><h1 style="font-weight: 800;">BIENVENIDOS</h1></div>
             <div  class="d-flex justify-content-center align-items-center" >
-                <form action="registrar.php" method="post">
+                <form action="modificadores/registros.php" method="post">
                     <div class="mb-3">
                     <label for="campo" class="form-label">Usuario</label>
                         <input 
@@ -55,7 +55,7 @@
                 
              <div  class="d-flex justify-content-center align-items-center" >
                 
-                <form action="registrar.php" method="post">
+                <form action="modificadores/registros.php" method="post">
                     <h1 class="m-5" style="font-weight: 800;">REGISTRATE</h1>
                     <div class="mb-3">
                         <label for="campo" class="form-label">Usuario</label>
@@ -63,7 +63,8 @@
                           type="text"
                           id="user"
                           name="user"
-                          class="form-control"  
+                          class="form-control" 
+                          required 
                         />
                       </div>
                     <div class="mb-3">
@@ -72,7 +73,8 @@
                           type="text"
                           id="email"
                           name="email"
-                          class="form-control"  
+                          class="form-control" 
+                          required 
                         />
                     </div>
                     <div class="mb-3">
@@ -81,7 +83,29 @@
                           type="password"
                           id="password"
                           name="password"
-                          class="form-control"  
+                          class="form-control" 
+                          required 
+                        />
+                    </div>
+                    <div class="mb-3">
+                    <label for="id USER" class="form-label">ID(dado por la empresa)</label>
+                        <input 
+                          type="number"
+                          id="userid"
+                          name="userid"
+                          class="form-control"
+                          required  
+                        />
+                    </div>
+                    <div class="mb-3">
+                    <label for="id USER" class="form-label">KEYUSER(opcional)</label>
+                        <input 
+                          type="number"
+                          id="keytime"
+                          name="keytime"
+                          class="form-control"
+                          value="1"
+                          required  
                         />
                     </div>
                     <button type="submit" name="guardar" value="usuario"  class="btn btn-primary">Registrate</button>

@@ -60,5 +60,13 @@ CREATE TABLE facturas(
         Foreign Key (empleado_ID) REFERENCES empleados(empleado_ID),
         Foreign Key (cliente_ID) REFERENCES clientes(cliente_ID)
     );
-
-DROP DATABASE supermarket;
+CREATE TABLE users ( 
+    user_ID INT PRIMARY KEY AUTO_INCREMENT,
+    user_nombre VARCHAR(50) NOT NULL,
+    user_email VARCHAR(50) NOT NULL,
+    user_password VARCHAR(50)NOT NULL,
+    user_empleado INT NOT NULL,
+    user_role INT NOT NULL,
+    Foreign Key (user_empleado) REFERENCES empleados(empleado_ID)
+);
+DROP TABLE users

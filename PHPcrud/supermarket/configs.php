@@ -1,5 +1,5 @@
 <?php
-require_once("../conexion/conexion.php");
+require_once("conexion/conexion.php");
 class Categorias extends Conectar{
     // variables 
     private $id;
@@ -146,7 +146,7 @@ class Clientes extends Conectar{
     private$company;
     protected $dbCnx;
     // constructor
-    public function __construct($id=0,$telefono="",$company=""){
+    public function __construct($id=0,$telefono="",$company="",$dbCnx=""){
         $this->id=$id;
         $this->telefono=$telefono;
         $this->company=$company;
@@ -407,7 +407,7 @@ class Productos extends Conectar{
           } 
     }
 }
-class Venta extends Conectar{
+class Venta extends Conectar{   
     /* variable */
     private$id;
     private$fecha;
@@ -521,7 +521,7 @@ class Venta extends Conectar{
     /* metodos inner join */
     public function nameEmp($empleado){
         try {
-            $stat = $this->dbCnx->prepare("SELECT empleados.empleado_nombre FROM empleados INNER JOIN productos ON empleados.empleado_ID = productos.empleado_ID  WHERE empleados.empleado_ID = ?");
+            $stat = $this->dbCnx->prepare("SELECT empleados.empleado_nombre FROM empleados INNER JOIN facturas ON empleados.empleado_ID = facturas.empleado_ID  WHERE empleados.empleado_ID = ?");
             $stat->execute([$empleado]);
             return $stat->fetchColumn();
               //   para saber como esta la pagina ahora
@@ -532,7 +532,7 @@ class Venta extends Conectar{
     }
     public function nameCli($cliente){
         try {
-            $stat = $this->dbCnx->prepare("SELECT clientes.cliente_nombre FROM clientes INNER JOIN productos ON clientes.cliente_ID = productos.cliente_ID  WHERE clientes.cliente_ID = ?");
+            $stat = $this->dbCnx->prepare("SELECT clientes.cliente_company FROM clientes INNER JOIN facturas ON clientes.cliente_ID = facturas.cliente_ID  WHERE clientes.cliente_ID = ?");
             $stat->execute([$cliente]);
             return $stat->fetchColumn();
               //   para saber como esta la pagina ahora
@@ -566,15 +566,167 @@ class Venta extends Conectar{
     }
     public function deleteSelfac(){
         try {
-          $stat = $this->dbCnx->prepare("DELETE FROM facturaDetalle WHERE detalle_ID=?");
-          $stat->execute([$this->id]);
+          $stat = $this->dbCnx->prepare("DELETE FROM facturaDetalle WHERE factura_ID=?");
+          $stat->execute([$this->factura]);
           return $stat -> fetchAll();
         } catch (Exception $e) {
             $e->getMessage();
         }
     }
 }
-class Registro extends conectar{
-
+class Registro extends Conectar{
+    private $id;
+    private $nombre;
+    private $email;
+    private $password;
+    private $empleado;
+    private $role;
+    protected $dbCnx;
+    /* CONSTRUCTOR */
+    public function __construct($id=0, $nombre="", $email="", $password="", $empleado=0, $role=0, $dbCnx=""){
+        $this->id=$id;            
+        $this->nombre=$nombre;        
+        $this->email=$email;        
+        $this->password=$password;        
+        $this->empleado=$empleado;        
+        $this->role=$role;   
+        parent::__construct($dbCnx);         
+    }
+    /* setters */
+    public function setID($id) {
+        $this->id=$id;
+    }
+    public function setNombre($nombre) {
+        $this->nombre=$nombre;
+    }
+    public function setEmail($email){
+        $this->email=$email;
+    }
+    public function setEmpleado($empleado){
+        $this->empleado=$empleado;
+    }
+    public function setPassword($password){
+        $this->password=$password;
+    }
+    public function setRole($role){
+        $this->role=$role;
+    }
+    /* getters */
+    public function getID() {
+        return $this->id;
+    }
+    public function getNombre() {
+        return $this->nombre;
+    }
+    public function getEmail(){
+        return $this->email;
+    }
+    public function getEmpleado(){
+       return $this->empleado;
+    }
+    public function getPassword(){
+        return $this->password;
+    }
+    public function getRole(){
+        return $this->role;
+    }
+    /* insert data */
+    public function insertData(){
+        try {
+            $stat = $this->dbCnx->prepare("INSERT INTO users(user_nombre,user_email,user_password,user_empleado,user_role) VALUES(?,?,?,?,?)");
+            $stat -> execute([$this->nombre,$this->email,md5($this->password),$this->empleado,$this->role]);
+        } catch (Exception $e) {
+            $e->getMessage();
+        }
+    }
+    public function checkList($email){
+        $stat = $this->dbCnx->prepare("SELECT * FROM users WHERE email = '$email'");
+        if ($stat->fetchColumn()) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    public function selectAll() {
+        try {
+            $stat=$this->dbCnx->prepare("SELECT * FROM users");
+            $stat->execute();
+            return $stat->fetchAll();
+        } catch (Exception $e) {
+            $e->getMessage();
+        } 
+    }
+    public function deleteSel(){
+        try {
+          $stat = $this->dbCnx->prepare("DELETE FROM users WHERE user_ID=?");
+          $stat->execute([$this->id]);
+          return $stat -> fetchAll();
+            //   para saber como esta la pagina ahora
+        } catch (Exception $e) {
+            return $e -> getMessage();
+        } 
+    }
+}
+class Login extends Conectar{
+    private $id;
+    private $email;
+    private $password;    
+    /* constructor */
+    public function __construct($id=0, $email="", $password="",$dbCnx=""){
+        $this->id = $id;
+        $this->email = $email;
+        $this->password = $password;
+        parent::__construct($dbCnx);
+    }    
+    /* setters & getters*/
+    public function setId($id){
+        $this->id = $id;
+    }
+    public function getId(){
+        return $this->id;
+    }
+    public function setEmail($email){
+        $this->email = $email;
+    }
+    public function getEmail(){
+        return $this->email;
+    }
+    public function setPassword($password){
+        $this->password = $password;
+    }
+    public function getPassword(){
+        return $this->password;
+    }
+    /* metodos */
+    public function fetchAll(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM users");/* prepara una sentencia(el * se refiere a todos ) */
+            $stm->execute();/* ejecuta las sentencias en prepare */
+            return $stm->fetchAll();/* metodo que saca todo(palabar reservada para PDO) */
+        } catch (Exception $e) {
+            return $e -> getMessage();/* si hay un error lo saca */
+        }
+    }
+    public function login(){
+      try{
+        $stat=$this->dbCnx->prepare("SELECT * FROM users WHERE user_email=? AND user_password=?",);
+        $stat->execute([$this->email,md5($this->password)]);
+        $user = $stat->fetchAll();/* saca los parecidos */
+        if(count($user)>0){
+            session_start();
+            $_SESSION['id'] = $user[0]['id'];
+            $_SESSION['email'] = $user[0]['email'];
+            $_SESSION['password'] = $user[0]['password'];
+            $_SESSION['username'] = $user[0]['username'];
+            $_SESSION['role'] = $user[0]['role'];
+            return true;
+        }else{
+            false;
+        }
+      }catch (Exception $e){
+        return $e->getMessage();
+      }
+    }
 }
 ?>

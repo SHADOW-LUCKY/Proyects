@@ -4,7 +4,7 @@
   ini_set("display_startup_errors", 1);
   
   error_reporting(E_ALL);
-  require_once("../config.php");
+  require_once("../configs.php");
   session_start();
 
 ?>
@@ -39,24 +39,36 @@
         <h3 ><?php echo $_SESSION['username'] ?></h3>
       </div>
       <div class="menus">
-        <a href="home.html" style="display: flex;gap:2px;">
+        <a href="home.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="margin: 0px;font-weight: 800;">Home</h3>
         </a>
-        <a href="../estudiantes.php" style="display: flex;gap:2px;">
+        <a href="../categorias.php" style="display: flex;gap:2px;">
+          <i class="bi bi-house-door"> </i>
+          <h3 style="">Categorias</h3>
+        </a>
+        <a href="../proveedores.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;">Estudiantes</h3>
+          <h3 style="font-weight: 800;">Proveedores</h3>
         </a>
-      
+        <a href="../empleados.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="font-weight: 800;">Empleados</h3>
         </a>
-        <a href="../loginRegister.php" style="display: flex;gap:2px;color: brown;">
-          <i class="bi bi-x-square"></i>
-          <h3 style="margin: 0px;">salir</h3>
+        <a href="../clientes.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="font-weight: 800;">Clientes</h3>
         </a>
-
-
+        <a href="../productos.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="font-weight: 800;">Productos</h3>
+        </a>
+        <a href="../facturas.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3 style="font-weight: 800;">Facturas</h3>
+        </a>     
       </div>
-    </div>
+</div>
 
     <div class="parte-media">
         <h2 class="m-2">Promedio</h2>

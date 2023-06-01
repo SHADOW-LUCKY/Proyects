@@ -1,4 +1,5 @@
 <?php
+require_once("db.php");
 class Conectar{
     protected $dbCnx;
     public function __construct(){

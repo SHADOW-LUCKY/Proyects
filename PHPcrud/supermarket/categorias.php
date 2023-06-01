@@ -4,7 +4,7 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
-require_once("modificadores/configs.php");
+require_once("configs.php");
 $data = new Categorias();/* creamos nueva clase de config */
 $allData = $data->selectAll();
 ?>
@@ -38,6 +38,10 @@ $allData = $data->selectAll();
         <h3>LUCKY</h3>
       </div>
       <div class="menus">
+        <a href="Home/home.php" style="display: flex;gap:2px;">
+          <i class="bi bi-house-door"> </i>
+          <h3 style="margin: 0px;font-weight: 800;">Home</h3>
+        </a>
         <a href="categorias.php" style="display: flex;gap:2px;">
           <i class="bi bi-house-door"> </i>
           <h3 style="">Categorias</h3>
