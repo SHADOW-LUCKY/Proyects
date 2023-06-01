@@ -1,4 +1,6 @@
 <?php
+session_start();
+if(!$_SESSION['id']){
   ini_set("display_errors", 1);
 
   ini_set("display_startup_errors", 1);
@@ -24,7 +26,7 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 
-  <link rel="stylesheet" type="text/css" href="home.css">
+  <link rel="stylesheet" href="home.css">
 
 </head>
 
@@ -66,7 +68,10 @@
         <a href="../facturas.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
           <h3 style="font-weight: 800;">Facturas</h3>
-        </a>     
+        </a> 
+        <form action="../modificadores/registros.php" method="post">
+          <button type="submit" class="btn btn-outline-dark col-12" name="guardar" value="salir">Log Out</button>
+        </form>    
       </div>
 </div>
 
@@ -111,3 +116,10 @@
 </body>
 
 </html>
+<?php
+
+} else {
+  echo"<script>alert('sesion cerrada');document.location='../loginRegister.php';</script>";
+}
+
+?>

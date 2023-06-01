@@ -1,4 +1,6 @@
 <?php
+session_start();
+if (!$_SESSION['id']) {
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
@@ -66,6 +68,9 @@ $allData = $data->selectAll();
           <i class="bi bi-people"></i>
           <h3 style="font-weight: 800;">Facturas</h3>
         </a>
+        <form action="modificadores/registros.php" method="post">
+          <button type="submit" class="btn btn-outline-dark col-12" name="guardar" value="salir">Log Out</button>
+        </form>
       </div>
     </div>
 
@@ -177,3 +182,10 @@ $allData = $data->selectAll();
 </body>
 
 </html>
+<?php
+
+} else {
+  echo"<script>alert('sesion cerrada');document.location='../loginRegister.php';</script>";
+}
+
+?>

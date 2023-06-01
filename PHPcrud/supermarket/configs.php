@@ -713,13 +713,14 @@ class Login extends Conectar{
         $stat=$this->dbCnx->prepare("SELECT * FROM users WHERE user_email=? AND user_password=?",);
         $stat->execute([$this->email,md5($this->password)]);
         $user = $stat->fetchAll();/* saca los parecidos */
+        print_r($user);
         if(count($user)>0){
             session_start();
-            $_SESSION['id'] = $user[0]['id'];
-            $_SESSION['email'] = $user[0]['email'];
-            $_SESSION['password'] = $user[0]['password'];
-            $_SESSION['username'] = $user[0]['username'];
-            $_SESSION['role'] = $user[0]['role'];
+            $_SESSION['id'] = $user[0]['user_ID'];
+            $_SESSION['username'] = $user[0]['user_nombre'];
+            $_SESSION['email'] = $user[0]['user_email'];
+            $_SESSION['password'] = $user[0]['user_password'];
+            $_SESSION['role'] = $user[0]['user_role'];
             return true;
         }else{
             false;

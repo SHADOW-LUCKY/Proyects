@@ -1,4 +1,7 @@
 <?php
+session_start();
+if (!$_SESSION['id']) {
+  
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
@@ -18,6 +21,7 @@ $allClients = $clients->selectAll();
 $productos = new Productos();
 $allProductos = $productos->selectAll();
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -76,6 +80,9 @@ $allProductos = $productos->selectAll();
           <i class="bi bi-people"></i>
           <h3 style="font-weight: 800;">Facturas</h3>
         </a>
+        <form action="modificadores/registros.php" method="post">
+          <button type="submit" class="btn btn-outline-dark col-12" name="guardar" value="salir">Log Out</button>
+        </form>
       </div>
     </div>
 
@@ -93,7 +100,9 @@ $allProductos = $productos->selectAll();
             <th scope="col">Empleado</th>
             <th scope="col">Cliente(Comprador)</th>
             <th scope="col">Detalle</th>
+            <?php if($_SESSION['role']==237455){ ?>
             <th scope="col">Borrar</th>
+            <?php } ?>
             </tr>
           </thead>
           <tbody class="" id="tabla">
@@ -109,7 +118,9 @@ $allProductos = $productos->selectAll();
               <td><?php echo $nameemp?></td>
               <td><?php echo $namecli?></td>
               <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal<?php echo $val['factura_ID']?>">detalle</button></td>
+              <?php if($_SESSION['role']==237455){ ?>
               <td><a class="btn btn-danger" href="modificadores/borrados.php?id=<?=$val['factura_ID']?>&req=deletefact">Borrar</a></td>
+              <?php }?>
             </tr>
                 
             <?php }  ?>
@@ -235,3 +246,10 @@ $allProductos = $productos->selectAll();
 </body>
 
 </html>
+<?php
+
+} else {
+  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
+}
+
+?>
