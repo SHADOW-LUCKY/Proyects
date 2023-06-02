@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!$_SESSION['id']) {
+if ($_SESSION['id']) {
   
 ini_set("display_errors", 1);
 
@@ -49,7 +49,7 @@ $allProductos = $productos->selectAll();
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
-        <h3>LUCKY</h3>
+        <h3><?php echo $_SESSION['username'] ?></h3>
       </div>
       <div class="menus">
       <a href="Home/home.php" style="display: flex;gap:2px;">

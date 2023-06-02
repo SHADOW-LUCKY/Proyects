@@ -96,9 +96,8 @@ if(isset($_POST['guardar'])){
         }else{
             echo"<script>alert('password o email invalidos');document.location='../loginRegister.php';</script>";
         }
-    }elseif ($log=="salir") {
-        unset($_SESSION['id']);
-        echo"<script>alert('sesion cerrada');document.location='../loginRegister.php';</script>";
+    }else{
+        echo"error(FATAL)";
     }
 }
 

@@ -1,11 +1,15 @@
 <?php
-session_start();
-if (!$_SESSION['id']) {
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
+session_start();
+if (!$_SESSION['id']) {
+} else {
+  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
+}
+
 require_once("configs.php");
 $data = new Categorias();/* creamos nueva clase de config */
 $allData = $data->selectAll();
@@ -182,10 +186,3 @@ $allData = $data->selectAll();
 </body>
 
 </html>
-<?php
-
-} else {
-  echo"<script>alert('sesion cerrada');document.location='../loginRegister.php';</script>";
-}
-
-?>

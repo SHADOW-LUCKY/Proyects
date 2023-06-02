@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!$_SESSION['id']) {
+if ($_SESSION['id']) {
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
