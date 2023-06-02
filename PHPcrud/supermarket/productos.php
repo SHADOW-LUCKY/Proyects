@@ -1,6 +1,9 @@
 <?php
 session_start();
-if ($_SESSION['id']) {
+if (!$_SESSION['id']) {
+  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
+}
+
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
@@ -43,7 +46,7 @@ $allProvider = $provider->selectAll();
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
-        <h3>LUCKY</h3>
+        <h3><?php echo $_SESSION['username'] ?></h3>
       </div>
       <div class="menus">
       <a href="Home/home.php" style="display: flex;gap:2px;">
@@ -83,7 +86,9 @@ $allProvider = $provider->selectAll();
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
         <h2>Productos</h2>
+        <?php if($_SESSION['role']==237455){?>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
+        <?php } ?>
       </div>
       <div class="menuTabla contenedor2">
         <table class="table table-custom ">
@@ -97,7 +102,9 @@ $allProvider = $provider->selectAll();
             <th scope="col">Stock</th>
             <th scope="col">Unidades Pedidas</th>
             <th scope="col">Descontinuado</th>
-            <th scope="col">Borrar</th>
+            <?php if($_SESSION['role']==237455){?>
+              <th scope="col">Borrar</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody class="" id="tabla">
@@ -116,8 +123,9 @@ $allProvider = $provider->selectAll();
               <td><?php echo $val['stock']?></td>
               <td><?php echo $val['unidades_pedidas']?></td>
               <td><?php echo $val['descontinuado']?></td>
-                
+              <?php if($_SESSION['role']==237455){?>
               <td><a class="btn btn-danger" href="modificadores/borrados.php?id=<?=$val['producto_ID']?>&req=deletepro">Borrar</a></td>
+              <?php }?>
             </tr>
             <?php } ?>
           </tbody>
@@ -206,10 +214,4 @@ $allProvider = $provider->selectAll();
 </body>
 
 </html>
-<?php
 
-} else {
-  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
-}
-
-?>

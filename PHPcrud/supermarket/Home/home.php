@@ -6,7 +6,6 @@
   error_reporting(E_ALL);
 session_start();
 if(!$_SESSION['id']){
-} else {
   echo"<script>alert('sesion cerrada');document.location='../loginRegister.php';</script>";
 }
   require_once("../configs.php");
