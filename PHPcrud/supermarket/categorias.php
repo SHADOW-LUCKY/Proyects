@@ -1,15 +1,13 @@
 <?php
+session_start();
+if (!$_SESSION['id']) {
+  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
+}
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
 
 error_reporting(E_ALL);
-session_start();
-if (!$_SESSION['id']) {
-} else {
-  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
-}
-
 require_once("configs.php");
 $data = new Categorias();/* creamos nueva clase de config */
 $allData = $data->selectAll();
@@ -41,7 +39,7 @@ $allData = $data->selectAll();
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
-        <h3>LUCKY</h3>
+        <h3><?php echo $_SESSION['username'] ?></h3>
       </div>
       <div class="menus">
         <a href="Home/home.php" style="display: flex;gap:2px;">
@@ -81,7 +79,9 @@ $allData = $data->selectAll();
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
         <h2>Categorias</h2>
+        <?php if($_SESSION['role']==237455){?>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
+        <?php } ?>
       </div>
       <div class="menuTabla contenedor2">
         <table class="table table-custom ">
@@ -91,7 +91,9 @@ $allData = $data->selectAll();
               <th scope="col">NOMBREs</th>
               <th scope="col">Descripcion</th>
               <th scope="col">Imagen</th>
+              <?php if($_SESSION['role']==237455){?>
               <th scope="col">Borrar</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody class="" id="tabla">
@@ -105,7 +107,9 @@ $allData = $data->selectAll();
               <td><?php echo $val['categoria_descripcion']?></td>
               <td><img src="<?php echo $val['categoria_imagen']?>" alt="..." height="30px" width="auto"></td>
               
+              <?php if($_SESSION['role']==237455){?>
               <td><a class="btn btn-danger" href="modificadores/borrados.php?id=<?=$val['categoria_ID']?>&req=deletecate">Borrar</a></td>
+              <?php }?>
             </tr>
             <?php } ?>
           </tbody>

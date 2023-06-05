@@ -6,6 +6,7 @@
  error_reporting(E_ALL);
 $log = $_POST['logout'];
 if ($log=="salir") {
+    session_start();
     unset($_SESSION['id']);
     unset($_SESSION['email']);
     unset($_SESSION['password']);

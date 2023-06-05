@@ -1,6 +1,8 @@
 <?php
 session_start();
-if($_SESSION['id']){
+if(!$_SESSION['id']){
+  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
+}
 ini_set("display_errors", 1);
 
 ini_set("display_startup_errors", 1);
@@ -37,7 +39,7 @@ $allData = $data->selectAll();
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
-        <h3>LUCKY</h3>
+        <h3><?php echo $_SESSION['username'] ?></h3>
       </div>
       <div class="menus">
       <a href="Home/home.php" style="display: flex;gap:2px;">
@@ -77,7 +79,9 @@ $allData = $data->selectAll();
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
         <h2>Clientes</h2>
+        <?php if($_SESSION['role']==237455){?>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
+        <?php } ?>
       </div>
       <div class="menuTabla contenedor2">
         <table class="table table-custom ">
@@ -86,7 +90,9 @@ $allData = $data->selectAll();
               <th scope="col">#</th>
               <th scope="col">Empresa</th>
               <th scope="col">Telefono</th>
+              <?php if($_SESSION['role']==237455){?>
               <th scope="col">Borrar</th>
+              <?php } ?>
             </tr>
           </thead>
           <tbody class="" id="tabla">
@@ -98,8 +104,9 @@ $allData = $data->selectAll();
               <td><?php echo $val['cliente_ID']?></td><!-- toca referirse a las filas -->
               <td><?php echo $val['cliente_celular']?></td>
               <td><?php echo $val['cliente_company']?></td>
-              
+              <?php if($_SESSION['role']==237455){ ?>
               <td><a class="btn btn-danger" href="modificadores/borrados.php?id=<?=$val['cliente_ID']?>&req=deletecli">Borrar</a></td>
+              <?php }?>
             </tr>
             <?php } ?>
           </tbody>
@@ -166,10 +173,3 @@ $allData = $data->selectAll();
 </body>
 
 </html>
-<?php
-
-} else {
-  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
-}
-
-?>

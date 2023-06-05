@@ -1,6 +1,9 @@
 <?php
 session_start();
-if ($_SESSION['id']) {
+if (!$_SESSION['id']) {
+  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
+} 
+
   
 ini_set("display_errors", 1);
 
@@ -80,8 +83,8 @@ $allProductos = $productos->selectAll();
           <i class="bi bi-people"></i>
           <h3 style="font-weight: 800;">Facturas</h3>
         </a>
-        <form action="modificadores/registros.php" method="post">
-          <button type="submit" class="btn btn-outline-dark col-12" name="guardar" value="salir">Log Out</button>
+        <form action="modificadores/logout.php" method="post">
+          <button type="submit" class="btn btn-outline-dark col-12" name="logout" value="salir">Log Out</button>
         </form>
       </div>
     </div>
@@ -89,7 +92,9 @@ $allProductos = $productos->selectAll();
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
         <h2>Facturas</h2>
+        <?php if($_SESSION['role']==237455){?>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
+        <?php } ?>
       </div>
       <div class="menuTabla contenedor2">
         <table class="table table-custom ">
@@ -246,10 +251,3 @@ $allProductos = $productos->selectAll();
 </body>
 
 </html>
-<?php
-
-} else {
-  echo"<script>alert('sesion cerrada');document.location='loginRegister.php';</script>";
-}
-
-?>
