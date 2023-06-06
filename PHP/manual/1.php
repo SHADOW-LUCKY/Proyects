@@ -115,4 +115,53 @@ if(1>2){
 else{
     /* haga esto */
 }
+/* y esto se pueden anidar sucesivamente para hacer varios condicionales */
+if (condition) {
+    # code...
+}elseif (condition) {
+    # code...
+}elseif (condition) {
+    # code...
+}
+/* esto danddnos bastantes condicionales para poder trabajar */
+
+/* switch */
+/* una  condicion especifica para todo mas que todo usado para opciones especificas */
+switch (expresion) {
+    case valor1:
+    // bloque de código si la expresión es igual a valor1
+    break;
+    case valor2:
+    // bloque de código si la expresión es igual a valor2
+    break;
+    default:
+    // bloque de código si la expresión no coincide con ninguno de los valores anteriores
+    break;
+   }
+
+/* bucles o ciclos */
+/* while */
+/* funciona para ejecutar un bloque de código mientras se cumpla una determinada condición */
+while ($a <= 10) {
+    /* haga esto  */
+}
+
+/*do While */
+/* es tecnicamente lo mismo que while pero en esta caso funciona como"primero lo hace y luego pregunta si sigue" */
+do {
+    /* haga esto */
+} while ($a <= 10);
+
+/* for  */
+/* este mas que todo es un iterador funcional para recorrer un array o un objetos */
+for ($i=0; $i <0 ; $i++) { 
+    /* haga esto */
+}
+
+/*  for each*/
+/* mismo que for solo que mas dirigido a valores con claves arrays literales etc */
+foreach ($variable as $key => $value) {
+    /* haga esto con $value */
+}
+
 ?>
