@@ -327,6 +327,7 @@ entrenador_equipo(FK equipo_nombre)
 directivos
 directivo_id
 directivo_nombre
+directivo_direccion
 directivo_equipo(FK equipo_nombre)
 
 
