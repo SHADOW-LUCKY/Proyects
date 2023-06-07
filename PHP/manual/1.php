@@ -162,6 +162,174 @@ for ($i=0; $i <0 ; $i++) {
 /* mismo que for solo que mas dirigido a valores con claves arrays literales etc */
 foreach ($variable as $key => $value) {
     /* haga esto con $value */
+    /* haga esto con key */
 }
 
+/* funciones (definidas por el usuario) */
+function calculate($a, $b, $operator) {
+    switch ($operator) {
+        case '+':
+            return $a + $b;
+        case '-':
+            return $a - $b;
+        case '*':
+            return $a * $b;
+        case '/':
+            return $a / $b;
+        default:
+            return "Invalid operator";
+    }
+}
+
+// ejemplos de uso
+echo calculate(4, 2, '+'); // Output: 6
+echo calculate(4, 2, '-'); // Output: 2
+echo calculate(4, 2, '*'); // Output: 8
+echo calculate(4, 2, '/'); // Output: 2
+echo calculate(4, 2, '%'); // Output: invalido
+/*  esta funcion calcula el resultado de una operacion entre dos numeros con el uso de un switch y se le da los parametros de entrada cuando se invoca*/
+
+/* uso de void */
+function logMessage(string $message) : void {
+    // Haz algo con el mensaje, como escribirlo en un archivo de registro
+    // ...
+    // Como la función no devuelve nada, especificamos void como el tipo de retorno
+}
+/* void es un tipo de dato que no tiene nada que devolver a la funcion y por ello es bueno especificar */
+
+/* include y require */
+/* include y require hacen lo mismo pero de manera distinta ambos llaman a un archivo pero si este no responde tienen diferente comportamiento*/
+include "ARCHIVO.php";
+include_once("ARCHIVO.php");
+/* si include no responde el codigo seguira ejecutando pero con un warning */
+require "ARCHIVO.php";
+require_once("ARCHIVO.php");
+/* si require no responde el parara inmediatamente el codigo */
+
+/* json encode y decode  */
+
+/* encode */
+/* json_encode() en PHP se utiliza para convertir una estructura de datos enPHP en una cadena JSON */
+
+/* decode */
+/*  json_decode() en PHP se utiliza para convertir una cadena JSON en una estructura de datos de PHP */
+
+/* ejemplo */
+// Creamos un array con algunos datos
+$data = array(
+    'name' => 'John Doe',
+    'age' => 30,
+    'email' => 'john.doe@example.com'
+);
+
+// Convertimos el array en una cadena JSON
+$json = json_encode($data);
+
+// Mostramos la cadena JSON resultante
+echo $json;
+// Resultado: {"name":"John Doe","age":30,"email":"john.doe@example.com"}
+
+// Convertimos la cadena JSON de vuelta a un array asociativo
+$decodedData = json_decode($json, true);
+
+// Mostramos el array resultante
+print_r($decodedData);
+// Resultado: Array ( [name] => John Doe [age] => 30 [email] => john.doe@example.com )
+
+/* 
+metodos de array(otra vez)
+*/
+// Ejemplo de array_flip(): intercambia todas las claves con sus valores correspondientes en un array
+$fruits = array('apple' => 'red', 'banana' => 'yellow', 'orange' => 'orange');
+$flipped = array_flip($fruits);
+print_r($flipped);
+// Resultado: Array ( [red] => apple [yellow] => banana [orange] => orange )
+
+// Ejemplo de array_fill(): llena un array con un valor repetido un número determinado de veces
+$filled = array_fill(0, 5, 'hello');
+print_r($filled);
+// Resultado: Array ( [0] => hello [1] => hello [2] => hello [3] => hello [4] => hello )
+
+// Ejemplo de array_filter(): filtra los elementos de un array utilizando una función de devolución de llamada
+$numbers = array(1, 2, 3, 4, 5, 6);
+$filtered = array_filter($numbers, function($num) {
+    return $num % 2 == 0;
+});
+print_r($filtered);
+// Resultado: Array ( [1] => 2 [3] => 4 [5] => 6 )
+
+// Ejemplo de array_map(): aplica una función a cada elemento de un array y devuelve un nuevo array con los resultados
+$numbers = array(1, 2, 3, 4, 5);
+$squared = array_map(function($num) {
+    return $num * $num;
+}, $numbers);
+print_r($squared);
+// Resultado: Array ( [0] => 1 [1] => 4 [2] => 9 [3] => 16 [4] => 25 )
+
+// Ejemplo de array_reduce(): reduce un array a un solo valor utilizando una función de devolución de llamada
+$numbers = array(1, 2, 3, 4, 5);
+$sum = array_reduce($numbers, function($carry, $num) {
+    return $carry + $num;
+}, 0);
+echo $sum;
+// Resultado: 15
+
+// Ejemplo de array_key_exists(): comprueba si una clave existe en un array
+$fruits = array('apple' => 'red', 'banana' => 'yellow', 'orange' => 'orange');
+$exists = array_key_exists('apple', $fruits);
+echo $exists;
+// Resultado: 1
+
+// Ejemplo de in_array(): comprueba si un valor existe en un array
+$numbers = array(1, 2, 3, 4, 5);
+$exists = in_array(3, $numbers);
+echo $exists;
+// Resultado: 1
+
+// Ejemplo de array_rand(): devuelve una o varias claves aleatorias de un array
+$fruits = array('apple', 'banana', 'orange', 'pear');
+$randomKeys = array_rand($fruits, 2);
+print_r($randomKeys);
+// Resultado: Array ( [0] => 2 [1] => 1 )
+
+// Ejemplo de array_unique(): elimina los valores duplicados de un array
+$numbers = array(1, 2, 3, 2, 4, 3, 5);
+$unique = array_unique($numbers);
+print_r($unique);
+// Resultado: Array ( [0] => 1 [1] => 2 [2] => 3 [4] => 4 [6] => 5 )
+
+// Ejemplo de array_intersect(): devuelve los elementos comunes a dos
+
+/* 
+equipos
+
+equipo_id
+equipo_nombre
+
+jugadores
+
+jugador_id
+jugador_nombre
+jugador_equipo(FK equipo_nombre)(actual)
+
+cambios equipo
+
+cambio_id
+jugador_cambio(FK jugador_nombre)
+jugador_equipo(FK equipo_nombre)
+fecha_cambio
+
+entrenadores
+entrenador_id
+entrenador_nombre
+entrenador_equipo(FK equipo_nombre)
+
+directivos
+directivo_id
+directivo_nombre
+directivo_equipo(FK equipo_nombre)
+
+
+
+*/
 ?>
