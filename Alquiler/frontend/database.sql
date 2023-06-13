@@ -5,7 +5,6 @@ CREATE TABLE Personas(
     persona_ID PRIMARY KEY INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL,
     telefono INT(20) NOT NULL,
-    sexo VARCHAR(29) NOT NULL,
     direccion VARCHAR(50) NOT NULL,
 );
 
@@ -21,16 +20,16 @@ CREATE TABLE Productos(
 );
 CREATE TABLE Clientes(
     cliente_ID PRIMARY KEY INT NOT NULL AUTO_INCREMENT,
-    idetificador_persona INT,
-    FOREIGN KEY (idetificador_persona) REFERENCES Personas(id_persona)
+    persona_related INT,
+    FOREIGN KEY (persona_related) REFERENCES Personas(persona_ID)
 );
 CREATE TABLE Empleados(
     empleado_ID PRIMARY KEY INT NOT NULL AUTO_INCREMENT,
-    persona_ID INT,
+    identificacion INT,
     usuario VARCHAR(30),
     password VARCHAR(255),
     id_constructora INT,
-    FOREIGN KEY (id_persona) REFERENCES Personas(id_persona),
+    FOREIGN KEY (identificacion) REFERENCES Personas(persona_ID),
     FOREIGN KEY (id_constructora) REFERENCES Constructoras (id_constructora)
 );
 CREATE TABLE Cotizaciones(
