@@ -24,33 +24,41 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item">
+            <a href="/ArTeM01-044/Proyects/psicology/psicology/Home" class="nav-link <?php if($rutas[5]=="Home"):?> active <?php endif ?>">
+              <i class="bi bi-house"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
         <li class="nav-item">
-            <a href="../gallery.html" class="nav-link">
-              <i class="nav-icon far fa-user"></i>
+            <a href="/ArTeM01-044/Proyects/psicology/psicology/Users" class="nav-link <?php if($rutas[5]=="Users"):?> active <?php endif ?>">
+              <i class="bi bi-person-circle"></i>
               <p>
                 Users
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../gallery.html" class="nav-link">
-              <i class="nav-icon far fa-user"></i>
+            <a href="/ArTeM01-044/Proyects/psicology/psicology/ClinicHistory" class="nav-link <?php if($rutas[5]=="ClinicHistory"):?> active <?php endif ?>">
+              <i class="bi bi-file-medical"></i>
               <p>
                 Clinic History
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../gallery.html" class="nav-link">
-             <i class="nav-icon bi bi-people-fill"></i>
+            <a href="/ArTeM01-044/Proyects/psicology/psicology/Interviews" class="nav-link <?php if($rutas[5]=="Interviews"):?> active <?php endif ?>">
+              <i class="bi bi-newspaper"></i>
               <p>
                 Interviews
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="../gallery.html" class="nav-link">
-              <i class="nav-icon far fa-user"></i>
+            <a href="/ArTeM01-044/Proyects/psicology/psicology/Psychologists" class="nav-link <?php if($rutas[5]=="Psychologists"):?> active <?php endif ?>">
+              <i class="bi bi-people"></i>
               <p>
                 Psychologists
               </p>
@@ -59,7 +67,7 @@
           
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
+            <i class="bi bi-envelope"></i>
               <p>
                 Mailbox
                 <i class="fas fa-angle-left right"></i>
