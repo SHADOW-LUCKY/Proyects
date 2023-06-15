@@ -18,8 +18,37 @@ $rutas = array_filter($rutas);
   <link rel="stylesheet" href="views/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="views/assets/plugins/adminLTE/css/adminlte.min.css">
+  <!-- DATA table -->
+  <link rel="stylesheet" href="views/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="views/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="views/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- CDN ICONS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- SCRIPTs -->
+<!-- jQuery -->
+<script src="views/assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="views/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="views/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="views/assets/plugins/adminLTE/js/adminlte.js"></script>
+<!-- plugins DataTables -->
+<script src="views/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="views/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="views/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="views/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="views/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="views/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="views/assets/plugins/jszip/jszip.min.js"></script>
+<script src="views/assets/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="views/assets/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="views/assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="views/assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="views/assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
@@ -55,15 +84,7 @@ $rutas = array_filter($rutas);
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="views/assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="views/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="views/assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="views/assets/plugins/adminLTE/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+
+
 </body>
 </html>
