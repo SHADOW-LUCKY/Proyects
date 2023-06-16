@@ -64,15 +64,16 @@ $rutas = array_filter($rutas);
 
   <?php
   $opt = $rutas[5];
+  
 
   if(isset($opt)){
     include 'views/pages/'."$opt/".$opt.'.php';
   }else{
     include 'views/pages/404.php';
-    
   }
   ?>
-  <!-- /.content-wrapper -->
+  
+  <!-- /.content-wrapper ;-->
 
   <?php include('views/modules/footer.php');?>
 

@@ -22,8 +22,6 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                <li class="nav-item">
             <a href="/ArTeM01-044/Proyects/psicology/psicology/Home" class="nav-link <?php if($rutas[5]=="Home"):?> active <?php endif ?>">
               <i class="bi bi-house"></i>
