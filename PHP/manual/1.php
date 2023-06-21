@@ -116,23 +116,24 @@ else{
     /* haga esto */
 }
 /* y esto se pueden anidar sucesivamente para hacer varios condicionales */
-if (condition) {
+if (0==0) {
     # code...
-}elseif (condition) {
+}elseif (0==0) {
     # code...
-}elseif (condition) {
+}elseif (0==0) {
     # code...
 }
 /* esto danddnos bastantes condicionales para poder trabajar */
 
 /* switch */
 /* una  condicion especifica para todo mas que todo usado para opciones especificas */
-switch (expresion) {
-    case valor1:
-    // bloque de código si la expresión es igual a valor1
+$val = 1;
+switch ($val) {
+    case 1:
+    // bloque de código si la expresión es igual a 1
     break;
-    case valor2:
-    // bloque de código si la expresión es igual a valor2
+    case 2:
+    // bloque de código si la expresión es igual a 2
     break;
     default:
     // bloque de código si la expresión no coincide con ninguno de los valores anteriores
@@ -300,37 +301,4 @@ print_r($unique);
 
 // Ejemplo de array_intersect(): devuelve los elementos comunes a dos
 
-/* 
-equipos
-
-equipo_id
-equipo_nombre
-
-jugadores
-
-jugador_id
-jugador_nombre
-jugador_equipo(FK equipo_nombre)(actual)
-
-cambios equipo
-
-cambio_id
-jugador_cambio(FK jugador_nombre)
-jugador_equipo(FK equipo_nombre)
-fecha_cambio
-
-entrenadores
-entrenador_id
-entrenador_nombre
-entrenador_equipo(FK equipo_nombre)
-
-directivos
-directivo_id
-directivo_nombre
-directivo_direccion
-directivo_equipo(FK equipo_nombre)
-
-
-
-*/
 ?>
