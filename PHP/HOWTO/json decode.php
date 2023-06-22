@@ -2,13 +2,13 @@
 
 $datos = '[
     {
-        "nombre" : "Dairon",
-        "apellido" :"Shmelinguer",
+        "nombre" : "Nicolas",
+        "apellido" :"Ordoñez",
         "edad" : 22
     },
     {
         "nombre" : "Angela",
-        "apellido" :"Gomez",
+        "apellido" :"Carvajal",
         "edad" : 20
     }
 ]';
@@ -31,3 +31,8 @@ foreach ($datosnew[0] as $key => $value) {
     echo $value;
     echo "<br>";
 }
+
+
+
+
+?>
