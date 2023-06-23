@@ -7,6 +7,6 @@ const getCategorias= async (req, res) => {
 }
 
 
-export const methodsHTTP = {
+export const methodsCATE = {
     getCategorias
 }

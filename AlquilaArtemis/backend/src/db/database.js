@@ -3,7 +3,7 @@ import config from "./../config.js";
 
 /* crear la conexion de my sql */
 const connection = mysql.createConnection({
-    host:config.host,
+    host:config.host, 
     database:config.database,
     user:config.user,
     password:config.password
