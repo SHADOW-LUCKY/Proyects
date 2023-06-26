@@ -13,6 +13,7 @@ async function loadConstructoras() {
     <td>${element.nombre_representante}</td>
     <td>${element.email_contacto}</td>
     <td>${element.telefono_contacto}</td>
+    <th><button id="${id_constructora}" class="btn btn-danger delete">eliminar</button></th>
     </tr>`
     constructoras.innerHTML += plantilla
    });
@@ -23,7 +24,6 @@ addEventListener('DOMContentLoaded', () => {
 })
 /* new Cliente */
 function newCli(e) {
-    e.preventDefault();
     let data = Object.fromEntries(new FormData(e.target))
     const registro={
         nombre_constructora: data.Constructora,

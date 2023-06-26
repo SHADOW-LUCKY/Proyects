@@ -1,6 +1,6 @@
 
-const url="http://localhost/ArTeM01-044/Proyects/Actividad/backend/controller.clientes.php?op=GetCli"
-const urlnew="http://localhost/ArTeM01-044/Proyects/Actividad/backend/controller.clientes.php?op=InsertCli"
+const url="http://localhost/SkylAb-154/Proyects/Actividad/backend/controller.clientes.php?op=GetCli"
+const urlnew="http://localhost/SkylAb-154/Proyects/Actividad/backend/controller.clientes.php?op=InsertCli"
 
 
 
@@ -28,3 +28,15 @@ export const AddCli = async (register) => {
         console.log(error);
     }
 }
+/* const eliminar=document.querySelector('#datosClientes')
+eliminar.addEventListener('click',borrar)
+function borrar(e) {
+    if(e.target.classList.contains('delete')){
+        console.log(e.target);
+        const idCliente = e.target.getAttribute('id')
+        console.log(idCliente);
+        const confir = confirm("desea eliminarlo?")
+        if (confir) {
+            deleteCliente(idCliente)
+        }
+    } */
