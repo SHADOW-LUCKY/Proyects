@@ -31,7 +31,7 @@ class Clientes extends Conexion{
            return $e->getMessage();
        }
     }
-    public function delete($id) {
+    public function deleteCli($id) {
         $conectar=parent::Conexion();
         parent::set_name();
         $sql="DELETE FROM constructoras WHERE id_constructora=?";

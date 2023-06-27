@@ -16,9 +16,9 @@ switch($_GET['op']){
         $data=$getCli->insertCli($body['nombre_constructora'], $body['nit_constructora'], $body['nombre_representante'], $body['email_contacto'], $body['telefono_contacto']);
         echo json_encode('success');
         break;
-    case "delete":
-            $datos=$alquilar->delete($_GET['id']);
-            echo json_encode("borrado exitosamente");
+    case "DeleteCli":
+            $data=$getCli->deleteCli($body['id_constructora']);
+            echo json_encode("success");
             break;
     default:
         echo 'error';
