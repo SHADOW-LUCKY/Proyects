@@ -5,5 +5,10 @@ import {methodsCATE as controlCATE} from '../controllers/categorias.controllers.
 const router = Router();
 /* el router nunca manda nada solo enruta a las funciones de la carpeta controladores */
 router.get("/", controlCATE.getCategorias);
+router.post("/", controlCATE.addCategorias);
+/* ponemos el parametro id para que la funcion pueda buscar con el link */
+router.get("/:id", controlCATE.GetCateID);
+router.delete("/:id", controlCATE.DelCateID);
+
 
 export default router;

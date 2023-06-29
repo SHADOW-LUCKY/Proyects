@@ -4,5 +4,8 @@ import {methodsPROC as controlPROC} from '../controllers/productos.controllers.j
 const router = Router();
 
 router.get("/", controlPROC.getProductos);
+router.post("/", controlPROC.addProductos);
+router.get("/:id", controlPROC.GetProdID);
+router.delete("/:id", controlPROC.DelProdID);
 
 export default router;

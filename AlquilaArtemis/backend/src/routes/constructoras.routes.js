@@ -4,5 +4,9 @@ import {methodsCONS as controlCONS} from '../controllers/constructoras.controlle
 const router = Router();
 
 router.get("/", controlCONS.getConstructoras);
+router.post("/", controlCONS.addConstructoras);
+/* ponemos el parametro id para que la funcion pueda buscar con el link */
+router.get("/:id", controlCONS.GetConsID);
+router.delete("/:id", controlCONS.DelConsID);
 
 export default router;

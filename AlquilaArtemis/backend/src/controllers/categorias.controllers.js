@@ -5,8 +5,61 @@ const getCategorias= async (req, res) => {
     res.json(categorias);
     console.log(categorias);
 }
+const addCategorias = async (req, res) => {
+   try {
+    /* sacamos los datos del body */
+    const{nombre_categoria,descripcion_categoria,img_categoria} = req.body;
+    /* creamos el objeto para poder hacer la consulta */
+    const obj = {nombre_categoria,descripcion_categoria,img_categoria};
+    /* creamos la conexion */
+    const connection = await getConnection();
+    /* creamos la consulta */
+    const result = await connection.query("INSERT INTO categorias SET ?", obj);
+    /* si funciona la consulta manda el mensaje */
+    res.json({"message": "Categoria creada"});
+
+   } catch (error) {
+       res.status(500)
+       res.send(error);
+   }
+}
+const GetCateID = async (req, res) => {
+    try {
+        /* usamos el id como parametro */
+        const { id } = req.params;
+        /* creamos la conexion */
+        const connection = await getConnection();
+        /* creamos la consulta */
+        const categorias = await connection.query("SELECT * FROM categorias WHERE id_categoria = ?", id);
+        /* si funciona la consulta manda el dato requerido */
+        res.json(categorias);
+        
+    } catch (error) {
+        res.status(500)
+        res.send(error);
+    }
+}
+const DelCateID = async (req, res) => {
+    try {
+        /* usamos el id como parametro */
+        const { id } = req.params;
+        /* creamos la conexion */
+        const connection = await getConnection();
+        /* creamos la consulta */
+        const categorias = await connection.query("DELETE FROM categorias WHERE id_categoria = ?", id);
+        /* si funciona la consulta manda el dato requerido */
+        res.json({"message": "Categoria eliminada"});
+        
+    } catch (error) {
+        res.status(500)
+        res.send(error);
+    }
+}
 
 
 export const methodsCATE = {
-    getCategorias
+    getCategorias,
+    addCategorias,
+    GetCateID,
+    DelCateID
 }

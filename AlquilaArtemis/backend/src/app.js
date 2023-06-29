@@ -7,6 +7,8 @@ import empleadosRoutes from './routes/empleados.routes.js';
 const app = express();
 
 app.set("port",3000);
+
+app.use(express.json());
 /* primer argumento es la ruta donde va a ir los datos de la pagina */
 app.use("/api/categorias",categoriaRoutes);
 app.use("/api/constructoras",constructorasRoutes);
