@@ -9,6 +9,7 @@ router.post("/", controlCATE.addCategorias);
 /* ponemos el parametro id para que la funcion pueda buscar con el link */
 router.get("/:id", controlCATE.GetCateID);
 router.delete("/:id", controlCATE.DelCateID);
+router.put("/:id", controlCATE.updateCategorias);
 
 
 export default router;

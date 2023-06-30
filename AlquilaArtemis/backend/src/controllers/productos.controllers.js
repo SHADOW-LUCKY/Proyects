@@ -54,10 +54,31 @@ const DelProdID = async (req, res) => {
         res.send(error);
     }
 }
+const updateProductos = async (req, res) => {
+    try {
+        /* usamos el id como parametro */
+        const { id } = req.params;
+        /* sacamos los datos del body */
+        const {nombre_producto ,precio_x_dia,stock_producto,categoria_producto} = req.body;
+        /* creamos el objeto para poder hacer la consulta */
+        const obj = {nombre_producto ,precio_x_dia,stock_producto,categoria_producto};
+        /* creamos la conexion */
+        const connection = await getConnection();
+        /* creamos la consulta */
+        const productos = await connection.query("UPDATE productos SET ? WHERE id_producto = ?", [req.body, id]);
+        /* si funciona la consulta manda el dato requerido */
+        res.json({"message": "Producto actualizado"});
+        
+    } catch (error) {
+        res.status(500)
+        res.send(error);
+    }
+}
 
 export const methodsPROC ={
     getProductos,
     addProductos,
     GetProdID,
-    DelProdID
+    DelProdID,
+    updateProductos
 }

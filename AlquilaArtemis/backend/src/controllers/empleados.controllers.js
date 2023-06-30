@@ -54,10 +54,31 @@ const DelEmpID = async (req, res) => {
         res.send(error);
     }
 }
+const updateEmpleados = async (req, res) => {
+    try {
+        /* usamos el id como parametro */
+        const { id } = req.params;
+        /* sacamos los datos del body */
+        const {nombre_empleado,email_empleado,celular_empleado,password_empleado } = req.body;
+        /* creamos el objeto para poder hacer la consulta */
+        const obj = {nombre_empleado,email_empleado,celular_empleado,password_empleado };
+        /* creamos la conexion */
+        const connection = await getConnection();
+        /* creamos la consulta */
+        const empleados = await connection.query("UPDATE empleados SET ? WHERE id_empleado = ?", [req.body, id]);
+        /* si funciona la consulta manda el dato requerido */
+        res.json({"message": "Empleado actualizado"});
+        
+    } catch (error) {
+        res.status(500)
+        res.send(error);
+    }
+}
 
 export const methodsEMP ={
     getEmpleados,
     addEmpleados,
     GetEmpID,
-    DelEmpID
+    DelEmpID,
+    updateEmpleados
 }

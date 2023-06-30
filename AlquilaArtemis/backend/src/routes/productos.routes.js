@@ -7,5 +7,6 @@ router.get("/", controlPROC.getProductos);
 router.post("/", controlPROC.addProductos);
 router.get("/:id", controlPROC.GetProdID);
 router.delete("/:id", controlPROC.DelProdID);
+router.put("/:id", controlPROC.updateProductos);
 
 export default router;

@@ -56,10 +56,32 @@ const DelConsID = async (req, res) => {
         res.send(error);
     }
 }
+const updateConstructoras= async (req, res) => {
+    try {
+        /* usamos el id como parametro */
+        const { id } = req.params;
+        /* sacamos los datos del body */
+        const {nombre_constructora,nit_constructora,nombre_representante,email_contacto,telefono_contacto} = req.body;
+        /* creamos el objeto para poder hacer la consulta */
+        const obj = {nombre_constructora,nit_constructora,nombre_representante,email_contacto,telefono_contacto};
+        /* creamos la conexion */
+        const connection = await getConnection();
+        /* creamos la consulta */
+        const constructoras = await connection.query("UPDATE constructoras SET ? WHERE id_constructora = ?", [obj, id]);
+        /* si funciona la consulta manda el dato requerido */
+        res.json({"message": "Constructora actualizada"});
+        
+    } catch (error) {
+        res.status(500)
+        res.send(error);
+    }
+    
+}
 
 export const methodsCONS ={
     getConstructoras,
     addConstructoras,
     GetConsID,
-    DelConsID
+    DelConsID,
+    updateConstructoras
 }
