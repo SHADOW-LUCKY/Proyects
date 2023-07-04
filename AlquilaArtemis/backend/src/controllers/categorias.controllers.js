@@ -3,7 +3,7 @@ const getCategorias= async (req, res) => {
     const connection = await getConnection();
     const categorias = await connection.query("SELECT * FROM categorias");
     res.json(categorias);
-    console.log(categorias);
+    return categorias;
 }
 const addCategorias = async (req, res) => {
    try {
