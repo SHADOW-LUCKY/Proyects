@@ -4,7 +4,7 @@ const getCategorias = async (req, res) => {
     /* seleccionamos todas las categorias en la base de datos */
     const categorias = await Categoria.find();
     /* devolvemos la respuesta */
-    res.json(categorias);
+    return res.json(categorias);
 }
 const addCategorias = async (req, res) => {
     const categoria = new Categoria(req.body);

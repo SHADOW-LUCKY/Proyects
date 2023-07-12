@@ -3,7 +3,6 @@ import Empleado from "../models/empleados.js"
 const getEmp = async (req,res) =>{
     const getEmp = await Empleado.find()
     res.json(getEmp)
-    console.log(getEmp);
 }
 
 const addEmp = async (req, res) =>{
