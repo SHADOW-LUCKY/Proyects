@@ -1,5 +1,5 @@
 import express from 'express';
-import {mongoCate as Cate} from '../controllers/categorias.controller.js';
+import {mongoCate as Cate} from '../controllers/categorias.controllers.js';
 
 const router = express.Router();
 

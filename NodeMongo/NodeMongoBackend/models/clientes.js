@@ -56,6 +56,6 @@ const clienteSchema = mongoose.Schema({
     timestamps:true
 }
 )
-const Clientes = mongoose.model("Clientes", clienteSchema);
+const Clientes = mongoose.model("companys", clienteSchema);
 
 export default Clientes;
