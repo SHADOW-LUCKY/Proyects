@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 
 <head>
@@ -64,6 +64,7 @@
               <th>Contacto</th>  
               <th>Direccion</th> 
               <th>Detalles</th> 
+              <th>Borrar</th>
             </tr>
           </thead>
           <tbody class="" id="dataClientes">
@@ -101,38 +102,87 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
+            <form class="col d-flex flex-wrap" id="nuevoCliente">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="CodigoPostal" class="form-label">CodigoPostal</label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
+                  name="CodigoPostal"
                   class="form-control"  
                 />
               </div>
-
               <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
+                <label for="Compania" class="form-label">Compania</label>
                 <input 
                   type="text"
-                  id="direccion"
-                  name="direccion"
+                  name="Compania"
                   class="form-control"  
                 />
               </div>
-
               <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
+                <label for="Contacto" class="form-label">Contacto</label>
                 <input 
                   type="text"
-                  id="logros"
-                  name="logros"
+                  name="Contacto"
                   class="form-control"  
-                 
                 />
               </div>
-
+              <div class="mb-1 col-12">
+                <label for="Direccion" class="form-label">Direccion</label>
+                <input 
+                  type="text"
+                  name="Direccion"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Ciudad" class="form-label">Ciudad</label>
+                <input 
+                  type="text"
+                  name="Ciudad"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Fax" class="form-label">Fax</label>
+                <input 
+                  type="text"
+                  name="Fax"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Pais" class="form-label">Pais</label>
+                <input 
+                  type="text"
+                  name="Pais"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Regiones" class="form-label">Regiones</label>
+                <input 
+                  type="text"
+                  name="Regiones"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Telefono" class="form-label">Telefono</label>
+                <input 
+                  type="text"
+                  name="Telefono"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Titulo" class="form-label">Titulo</label>
+                <input 
+                  type="text"
+                  name="Titulo"
+                  class="form-control"  
+                />
+              </div>
               <div class=" col-12 m-2">
                 <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
               </div>

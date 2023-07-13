@@ -14,7 +14,7 @@ async function showget() {
         <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#${element._id}">
         Detalles
         </button></td>
-        <td><button type="button" class="btn btn-danger eliminar" id="${element._id}">Borrar</button></td>
+        <td><button type="button" class="btn btn-danger eliminar" value="${element._id}">Borrar</button></td>
         </tr>`
         let modalplantilla = `
         <div class="modal fade" id="${element._id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -45,20 +45,20 @@ async function showget() {
         dataProductos.innerHTML += plantilla    
     })
 }
-function makepost(e) {
+async function makepost(e) {
     e.preventDefault()
     let formData = Object.fromEntries(new FormData(e.target))
-    post('productos', formData)
+    await post('productos', formData)
     window.location.reload()
 }
 
 function shutdown(e){
     if (e.target.classList.contains("eliminar")) {
-        const idCategorias = e.target.getAttribute("id");
-        console.log(idCategorias);
+        const idProductos = e.target.getAttribute("value");
+        console.log(idProductos);
         const confir = confirm("Desea eliminar este producto?");
         if (confir) {
-            del('productos', idCategorias);
+            del('productos', idProductos);
             window.location.reload();
         }
     }

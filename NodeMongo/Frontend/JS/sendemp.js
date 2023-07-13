@@ -1,7 +1,7 @@
-import {get} from './API.js'
+import {get,post,del } from './API.js'
 const dataEmployees = document.querySelector('#dataEmployees')
 const modales = document.querySelector('#modales')
-
+const nuevoEmployee = document.querySelector('#nuevoEmployee')
 async function showget() {
     let data = await get('empleados')
     data.forEach(element => {
@@ -13,6 +13,7 @@ async function showget() {
         <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#${element._id}">
         Detalles
       </button></td>
+        <td><button type="button" class="btn btn-danger eliminar" value="${element._id}">Borrar</button></td>
       </tr>`
     let modalplantilla =`
     <div class="modal fade" id="${element._id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -66,24 +67,26 @@ async function showget() {
     })
 
 }
+async function makepost(e) {
+    e.preventDefault()
+    let formData = Object.fromEntries(new FormData(e.target))
+    await post('empleados', formData)
+    window.location.reload()
 
-showget()
+}
+async function shutdown(e){
+    if (e.target.classList.contains("eliminar")) {
+        const idClientes = e.target.getAttribute("value");
+        console.log(idClientes);
+        const confir = confirm("Desea eliminar este producto?");
+        if (confir) {
+           await del('empleados', idClientes);
+            window.location.reload();
+        }
+   
+    }
+}
 
-/*
-Ciudad 
-CodigoPostal 
-Direccion 
-EmpleadoID 
-Extension 
-FechaNacimiento 
-Foto 
-Jefe 
-Notas 
-Pais 
-Regiones 
-RutaFoto 
-Telefono 
-Titulo 
-TituloCortesia 
-_id 
-*/
+addEventListener('DOMContentLoaded',showget)
+dataEmployees.addEventListener('click',shutdown)
+nuevoEmployee.addEventListener('submit', makepost)

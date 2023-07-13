@@ -60,6 +60,8 @@
               <th>Apellido</th>
               <th>Direccion</th>  
               <th>FechaContratacion</th>  
+              <th>Detalles</th>
+              <th>Borrar</th>
             </tr>
           </thead>
           <tbody class="" id="dataEmployees">
@@ -96,38 +98,153 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" method="post">
+            <form class="col d-flex flex-wrap" id="nuevoEmployee">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Nombres</label>
+                <label for="Nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombres"
-                  name="nombres"
+                  name="Nombre"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Apellido" class="form-label">Apellido</label>
+                <input 
+                  type="text"
+                  name="Apellido"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Ciudad" class="form-label">Ciudad</label>
+                <input 
+                  type="text"
+                  name="Ciudad"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="CodigoPostal" class="form-label">CodigoPostal</label>
+                <input 
+                  type="text"
+                  name="CodigoPostal"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Direccion" class="form-label">Direccion</label>
+                <input 
+                  type="text"
+                  name="Direccion"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="EmpleadoID" class="form-label">EmpleadoID</label>
+                <input 
+                  type="text"
+                  name="EmpleadoID"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Extension" class="form-label">Extension</label>
+                <input 
+                  type="text"
+                  name="Extension"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="FechaNacimiento" class="form-label">FechaNacimiento</label>
+                <input 
+                  type="text"
+                  name="FechaNacimiento"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="FechaContratacion" class="form-label">FechaContratacion</label>
+                <input 
+                  type="text"
+                  name="FechaContratacion"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Foto" class="form-label">Foto</label>
+                <input 
+                  type="text"
+                  name="Foto"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Jefe" class="form-label">Jefe</label>
+                <input 
+                  type="text"
+                  name="Jefe"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Notas" class="form-label">Notas</label>
+                <input 
+                  type="text"
+                  name="Notas"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Pais" class="form-label">Pais</label>
+                <input 
+                  type="text"
+                  name="Pais"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Regiones" class="form-label">Regiones</label>
+                <input 
+                  type="text"
+                  name="Regiones"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="RutaFoto" class="form-label">RutaFoto</label>
+                <input 
+                  type="text"
+                  name="RutaFoto"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Telefono" class="form-label">Telefono</label>
+                <input 
+                  type="text"
+                  name="Telefono"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="Titulo" class="form-label">Titulo</label>
+                <input 
+                  type="text"
+                  name="Titulo"
+                  class="form-control"  
+                />
+              </div>
+              <div class="mb-1 col-12">
+                <label for="TituloCortesia" class="form-label">TituloCortesia</label>
+                <input 
+                  type="text"
+                  name="TituloCortesia"
                   class="form-control"  
                 />
               </div>
 
-              <div class="mb-1 col-12">
-                <label for="direccion" class="form-label">Direccion</label>
-                <input 
-                  type="text"
-                  id="direccion"
-                  name="direccion"
-                  class="form-control"  
-                />
-              </div>
-
-              <div class="mb-1 col-12">
-                <label for="logros" class="form-label">Logros</label>
-                <input 
-                  type="text"
-                  id="logros"
-                  name="logros"
-                  class="form-control"  
-                 
-                />
-              </div>
-
+            
               <div class=" col-12 m-2">
                 <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
               </div>
