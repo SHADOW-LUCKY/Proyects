@@ -2,9 +2,9 @@ import etapas from '../models/etapas.js';
 
 const getEtapas = async (req, res) => {
     /* seleccionamos todas las categorias en la base de datos */
-    const etapas = await etapas.find();
+    const etapa = await etapas.find();
     /* devolvemos la respuesta */
-    return res.json(etapas);
+    return res.json(etapa);
 }
 
 const addEtapas = async (req, res) => {

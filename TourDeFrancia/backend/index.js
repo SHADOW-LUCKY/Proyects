@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import DBConnection from './config/config.js';
 import ciclistasRoutes from './routes/ciclistas.routes.js';
 import equiposRoutes from './routes/equipos.routes.js';
 import premiosRoutes from './routes/premios.routes.js';

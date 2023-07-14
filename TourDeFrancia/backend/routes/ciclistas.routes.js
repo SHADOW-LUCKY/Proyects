@@ -3,9 +3,9 @@ import {mongoCiclistas as Ciclistas} from '../controllers/ciclistas.controllers.
 
 const router = express.Router();
 
-router.get("/all", Ciclistas.getCiclistas);
-router.post("/add", Ciclistas.addCiclistas);
-router.delete("/del/:id", Ciclistas.delCiclistas);
-router.patch("/upt/:id", Ciclistas.uptCiclistas);
+router.get("/all",Ciclistas.getCiclista);
+router.post("/add",Ciclistas.addCiclista);
+router.delete("/del/:id", Ciclistas.delCiclista);
+router.patch("/upt/:id", Ciclistas.uptCiclista);
 
 export default router;

@@ -2,9 +2,9 @@ import equipos from '../models/equipos.js';
 
 const getEquipos = async (req, res) => {
     /* seleccionamos todas las categorias en la base de datos */
-    const equipos = await equipos.find();
+    const equipo = await equipos.find();
     /* devolvemos la respuesta */
-    return res.json(equipos);
+    return res.json(equipo);
 }
 
 const addEquipos = async (req, res) => {

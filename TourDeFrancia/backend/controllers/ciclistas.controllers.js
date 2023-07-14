@@ -1,18 +1,18 @@
 import ciclistas from '../models/ciclistas.js';
 
-const getCiclistas = async (req, res) => {
+const getCiclista = async (req, res) => {
     /* hacemos la consulta sobre todo lo que hay en ciclistas */
-    const ciclistas = await ciclistas.find();
+    const ciclista = await ciclistas.find();
     /* mostramos el resultado */
-    res.json(ciclistas);
+    res.json(ciclista);
 }
 
 const addCiclista = async (req, res) => {
     /*usamosel body para hacer la consulta con el modelo ciclistas */
-    const ciclistas = new ciclistas(req.body);
+    const ciclista = new ciclistas(req.body);
     try {
         /* guardamos en la base de datos */
-        const ciclistaSave = await ciclistas.save();
+        const ciclistaSave = await ciclista.save();
         /* mostramos el resultado */
         res.json(ciclistaSave);
     }
@@ -66,7 +66,7 @@ const uptCiclista = async (req, res) => {
 }
 
 export const mongoCiclistas = {
-    getCiclistas,
+    getCiclista,
     addCiclista,
     delCiclista,
     uptCiclista

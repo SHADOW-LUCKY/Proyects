@@ -2,17 +2,17 @@ import premios from '../models/premios.js';
 
 const getPremios = async (req, res) => {
     /* seleccionamos todas las categorias en la base de datos */
-    const premios = await premios.find();
+    const premio = await premios.find();
     /* devolvemos la respuesta */
-    return res.json(premios);
+    return res.json(premio);
 }
 
 const addPremios = async (req, res) => {
     /* hacemos la consulta sobre todo lo que hay en equipos con una id */
-    const premios = new premios(req.body);
+    const premio = new premios(req.body);
     try {
         /* guardamos en la base de datos */
-        const premiosSave = await premios.save();
+        const premiosSave = await premio.save();
         /* mostramos el resultado */
         res.json(premiosSave);
     } catch (error) {

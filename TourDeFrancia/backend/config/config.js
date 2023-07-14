@@ -17,3 +17,5 @@ const DBConnection = async () => {
         
     }
 }
+
+export default DBConnection;
