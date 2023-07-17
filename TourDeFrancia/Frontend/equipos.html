@@ -25,52 +25,37 @@
 
       <div class="perfil">
         <h3 style="margin-bottom: 2rem;">Camper Skills.</h3>
-        <img src="images/Diseño sin título.png" alt="" class="imagenPerfil">
         <h3>Maicol Estrada</h3>
       </div>
       <div class="menus">
-        <a href="categorias.html" style="display: flex;gap:1px;">
+        <a href="ciclistas.html" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Categorias</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Ciclistas</h3>
         </a>
-        <a href="empleados.html"style="display: flex;gap:1px;">
+        <a href="etapas.html"style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Etapas</h3>
         </a>
-        <a href="clientes.html" style="display: flex;gap:1px;">
+        <a href="equipos.html" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Equipos</h3>
         </a>
-        <a href="productos.html" style="display: flex;gap:1px;">
+        <a href="premios.html" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Premios</h3>
         </a>
-
       </div>
     </div>
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Categorias</h2>
+        <h2>Equipos</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
-        <table class="table table-custom ">
-          <thead>
-            <tr>
-              <th>CategoriaNombre</th>
-              <th>Descripcion</th>
-              <th>Imagen</th>  
-            </tr>
-          </thead>
-          <tbody class="" id="dataCategorias">
-          
-         
-       
-            
-          </tbody>
-        
-        </table>
+        <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-3 g-4" id="dataEquipos">
+
+        </div>
 
       </div>
 
@@ -78,11 +63,12 @@
     </div>
 
     <div class="parte-derecho " id="detalles">
-      <h3>Detalle Estudiantes</h3>
+      <h3>Detalle de Equipos</h3>
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
-
+        
     </div>
+    <div id="modales"></div>
 
 
 
@@ -93,37 +79,36 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Estudiante</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Equipo</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" id="nuevaCategoria">
+            <form class="col d-flex flex-wrap" id="formEquipos">
               <div class="mb-1 col-12">
-                <label for="CategoriaNombre" class="form-label">CategoriaNombre</label>
+                <label for="name" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  name="CategoriaNombre"
+                  name="name"
                   class="form-control"  
                 />
               </div>
               <div class="mb-1 col-12">
-                <label for="Descripcion" class="form-label">Descripcion</label>
+                <label for="country" class="form-label">Pais de origen</label>
                 <input 
                   type="text"
-                  name="Descripcion"
+                  name="country"
                   class="form-control"  
                 />
               </div>
               <div class="mb-1 col-12">
-                <label for="Imagen" class="form-label">Imagen</label>
+                <label for="description" class="form-label">Descripción</label>
                 <input 
                   type="text"
-                  name="Imagen"
+                  name="description"
                   class="form-control"  
                 />
               </div>
-              
-
+   
               <div class=" col-12 m-2">
                 <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
               </div>
@@ -137,7 +122,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
-    <script src="JS/sendcate.js" type="module"></script>
+    <script src="JS/sendEQ.js" type="module"></script>
 
 
 </body>

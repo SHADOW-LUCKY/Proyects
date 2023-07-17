@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página </title>
+  <title>Welcome</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
@@ -28,57 +28,37 @@
         <h3>Maicol Estrada</h3>
       </div>
       <div class="menus">
-        <a href="categorias.html" style="display: flex;gap:1px;">
+        <a href="ciclistas.html" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Categorias</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Ciclistas</h3>
         </a>
-        <a href="empleados.html"style="display: flex;gap:1px;">
+        <a href="etapas.html"style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Empleados</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Etapas</h3>
         </a>
-        <a href="clientes.html" style="display: flex;gap:1px;">
+        <a href="equipos.html" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Clientes</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Equipos</h3>
         </a>
-        <a href="productos.html" style="display: flex;gap:1px;">
+        <a href="premios.html" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
-          <h3 style="margin: 0px;font-weight: 800;">Productos</h3>
+          <h3 style="margin: 0px;font-weight: 800;">Premios</h3>
         </a>
-       
-
-
       </div>
     </div>
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Estudiantes</h2>
+        <h2>Ciclistas</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
-        <table class="table table-custom ">
-          <thead>
-            <tr>
-              <th>ProductoNombre</th>
-              <th>PrecioUnitario</th>
-              <th>CantidadPorUnidad</th>  
-              <th>UnidadesStock</th>  
-              <th>Detalles</th>
-              <th>Borrar</th>
-            </tr>
-          </thead>
-          <tbody class="" id="dataProductos">
-          
+        <div class="row row-cols-sm-1 row-cols-md-1 row-cols-lg-3 g-4" id="dataCiclistas">
          
-       
-
-          </tbody>
+        </div>
         
-        </table>
-
+        
       </div>
-
-
     </div>
 
     <div class="parte-derecho " id="detalles">
@@ -86,8 +66,10 @@
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
 
-    </div> 
-    <div id="modales"></div>
+    </div>
+
+
+
 
 
     <!-- /////////Modal de registro de nuevo estuiante //////////-->
@@ -95,94 +77,53 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
         <div class="modal-content" >
           <div class="modal-header" >
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Producto</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Ciclista</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" id="nuevoProducto">
+            <form class="col d-flex flex-wrap" id="formCiclistas">
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">CategoriaID</label>
+                <label for="nombre_completo" class="form-label">Nombre completo</label>
                 <input 
                   type="text"
-                  name="CategoriaID"
+                  name="nombre_completo"
                   class="form-control"  
-                  required
                 />
               </div>
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">ProductoNombre</label>
+                <label for="edad" class="form-label">edad</label>
                 <input 
-                  type="text"
-                  name="ProductoNombre"
+                  type="number"
+                  name="edad"
                   class="form-control"  
-                  required
                 />
               </div>
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">CantidadPorUnidad </label>
+                <label for="pais" class="form-label">pais</label>
                 <input 
                   type="text"
-                  name="CantidadPorUnidad"
+                  name="pais"
                   class="form-control"  
-                  required
                 />
               </div>
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">PrecioUnitario</label>
+                <label for="genero" class="form-label">genero</label>
                 <input 
                   type="text"
-                  name="PrecioUnitario"
+                  name="genero"
                   class="form-control"  
-                  required
                 />
               </div>
               <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">Discontinuado</label>
+                <label for="equipo" class="form-label">equipo</label>
                 <input 
                   type="text"
-                  name="Discontinuado"
+                  name="equipo"
                   class="form-control"  
-                  required
-                />
-              </div>
-              <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">UnidadesStock</label>
-                <input 
-                  type="text"
-                  name="UnidadesStock"
-                  class="form-control"  
-                  required
-                />
-              </div>
-              <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">UnidadesPedidas</label>
-                <input 
-                  type="text"
-                  name="UnidadesPedidas"
-                  class="form-control"  
-                  required
-                />
-              </div>
-              <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">ProveedorID</label>
-                <input 
-                  type="text"
-                  name="ProveedorID"
-                  class="form-control"  
-                  required
-                />
-              </div>
-              <div class="mb-1 col-12">
-                <label for="nombres" class="form-label">NivelReorden</label>
-                <input 
-                  type="text"
-                  name="NivelReorden"
-                  class="form-control"  
-                  required
                 />
               </div>
               <div class=" col-12 m-2">
-                <input type="submit" class="btn btn-primary" value="guardar"/>
+                <input type="submit" class="btn btn-primary" value="guardar" name="guardar"/>
               </div>
             </form>  
          </div>       
@@ -194,7 +135,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
-    <script src="JS/sendproc.js" type="module"></script>
+    <script src="JS/sendCI.js" type="module"></script>
 
 
 </body>

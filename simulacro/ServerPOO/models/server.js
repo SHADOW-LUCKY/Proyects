@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import dineroRoutes from '../routes/dinero.routes.js'
+import accionesRoutes from '../routes/acciones.routes.js'
+import traderRoutes from '../routes/trader.routes.js'
+import tipoDineroRoutes from '../routes/tipodinero.routes.js'
 /* ADVERTENCIA : tener en cuenta el orden de lads funciones del server */
 class Server {
     constructor () {
@@ -8,6 +11,9 @@ class Server {
         this.port = process.env.PORT /* usamos la variable PORT de entorno */ 
         this.middlewares()
         this.moneypath = '/api/dinero'
+        this.actionspath = '/api/acciones'
+        this.traderpath = '/api/trader'
+        this.pwpath = '/api/tipodinero'
         this.routes()/* nos referimos a la funcion routes */
     }
     middlewares(){
@@ -17,6 +23,9 @@ class Server {
     }
     routes(){
         this.app.use(this.moneypath,dineroRoutes) 
+        this.app.use(this.actionspath,accionesRoutes)
+        this.app.use(this.traderpath,traderRoutes)
+        this.app.use(this.pwpath,tipoDineroRoutes)
     }
     listener(){
         this.app.listen(this.port , () => {

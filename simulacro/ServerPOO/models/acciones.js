@@ -26,7 +26,7 @@ const accionesSchema = new mongoose.Schema({
 }
 )
 
-const acciones = mongoose.model('Acciones', accionesSchema);
+const acciones = mongoose.model('acciones', accionesSchema);
 
 export default acciones;
 

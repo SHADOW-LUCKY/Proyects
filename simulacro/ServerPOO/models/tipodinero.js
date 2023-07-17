@@ -26,6 +26,6 @@ const cryptoSchema = new mongoose.Schema({
 }
 )
 
-const crypto = mongoose.model('Crypto', CryptoSchema);
+const crypto = mongoose.model('cryptos', cryptoSchema);
 
 export default crypto;
