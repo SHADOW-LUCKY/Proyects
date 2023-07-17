@@ -3,22 +3,22 @@ import mongoose from 'mongoose';
 const usuarioSchema = mongoose.Schema({
     name:{
         type: String,
-        required: [true , 'value is required'],
+        required: [true , 'name is required'],
 
     },
     email:{
         type: String,
-        required: [true , 'value is required'],
+        required: [true , 'email is required'],
         unique: true
 
     },
     password:{
         type: String,
-        required: [true , 'value is required'],
+        required: [true , 'password is required'],
     },
     role:{
         type: String,
-        required: [true , 'value is required'],
+        required: [true , 'role is required'],
         default: 'user',    
         enum:['admin','user','seller']
     },
