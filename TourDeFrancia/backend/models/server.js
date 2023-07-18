@@ -4,6 +4,7 @@ import ciclistasRoutes from '../routes/ciclistas.routes.js';
 import equiposRoutes from '../routes/equipos.routes.js';
 import premiosRoutes from '../routes/premios.routes.js';
 import etapasRoutes from '../routes/etapas.routes.js';
+import asigPremiosRoutes from '../routes/asigpremios.routes.js';
 
 class Server {
     constructor () {
@@ -14,6 +15,7 @@ class Server {
         this.equiposPATH = '/equipos' 
         this.premiosPATH = '/premios' 
         this.etapasPATH = '/etapas' 
+        this.asigPremiosPATH = '/asig'
         this.routes()
     
     }
@@ -27,6 +29,7 @@ class Server {
         this.app.use(this.equiposPATH, equiposRoutes)
         this.app.use(this.premiosPATH, premiosRoutes)
         this.app.use(this.etapasPATH, etapasRoutes)
+        this.app.use(this.asigPremiosPATH, asigPremiosRoutes)
     }
     listener(){
         this.app.listen(this.port , () => {

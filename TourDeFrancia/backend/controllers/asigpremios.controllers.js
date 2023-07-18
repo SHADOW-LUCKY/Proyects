@@ -1,14 +1,14 @@
 import asigpremios from '../models/asigpremios.js';
 
 const getAsigPre = async (req, res) => {
-    const asigpremios = await asigpremios.find()
-    res.json(asigpremios)
+    const asigpre = await asigpremios.find()
+    res.json(asigpre)
 }
 
 const postAsigPre = async (req, res) => {
-    const asigpremios = new asigpremios(req.body)
+    const asigpre = new asigpremios(req.body)
     try {
-        const asigpremiosSave = await asigpremios.save()
+        const asigpremiosSave = await asigpre.save()
         res.json(asigpremiosSave)
     } catch (error) {
         res.status(400)
@@ -26,7 +26,7 @@ const delAsigPre = async (req, res) => {
     }
 }
 
-export const mongoAsigPre = {
+export const methAsigPre = {
     getAsigPre,
     postAsigPre,
     delAsigPre
