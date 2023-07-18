@@ -20,7 +20,6 @@ const usuarioSchema = mongoose.Schema({
         type: String,
         required: [true , 'role is required'],
         default: 'user',    
-        enum:['admin','user','seller']
     },
     status:{
         type: Boolean,
