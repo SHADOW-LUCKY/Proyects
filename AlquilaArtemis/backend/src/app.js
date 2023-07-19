@@ -9,7 +9,7 @@ import cors from "cors";
 const app = express();
 
 
-app.set("port",3000);
+app.set("port",5000);
 const corsOption={
     methods: ["GET","POST","PUT","DELETE"],
 }

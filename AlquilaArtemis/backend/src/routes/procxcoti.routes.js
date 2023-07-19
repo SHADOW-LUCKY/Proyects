@@ -11,3 +11,4 @@ router.get("/:id", controlProcxcoti.GetProcxcotiID);
 router.delete("/:id", controlProcxcoti.DelProcxcotiID);
 router.put("/:id", controlProcxcoti.updateProcxcoti);
 
+export default router

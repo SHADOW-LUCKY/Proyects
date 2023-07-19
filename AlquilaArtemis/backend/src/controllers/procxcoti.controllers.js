@@ -76,7 +76,7 @@ const updateProcxcoti= async (req, res) => {
     }
 }
 
-export methodsProcxcoti = {
+export const methodsProcxcoti = {
     getProcxcoti,
     addProcxcoti,
     GetProcxcotiID,
