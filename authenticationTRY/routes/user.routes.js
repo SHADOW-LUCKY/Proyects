@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import {check} from 'express-validator'
 import {methUser as user} from '../controllers/user.controllers.js'
-import validate from '../middlewares/validate.documents.js';
+import validate from '../middlewares/validate.documents.js'
 import Role from '../models/role.js'
 const router = Router()
 

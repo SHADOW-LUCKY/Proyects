@@ -1,13 +1,15 @@
 import express from 'express'
 import cors from 'cors'
 import userRoutes from '../routes/user.routes.js'
+import authRoutes from '../routes/auth.routes.js'
 /* ADVERTENCIA : tener en cuenta el orden de lads funciones del server */
 class Server {
     constructor () {
         this.app = express()/* creamos el server */
         this.port = process.env.PORT /* usamos la variable PORT de entorno */ 
         this.middlewares()
-        this.userpath = '/api/users'
+        this.userpath = '/users'
+        this.authpath = '/auth'
         this.routes()/* nos referimos a la funcion routes */
     }
     middlewares(){
@@ -17,6 +19,7 @@ class Server {
     }
     routes(){
         this.app.use(this.userpath, userRoutes) 
+        this.app.use(this.authpath, authRoutes)
     }
     listener(){
         this.app.listen(this.port , () => {
