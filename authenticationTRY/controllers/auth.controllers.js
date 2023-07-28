@@ -1,6 +1,7 @@
 import {response} from 'express';
 import Usuario from '../models/user.js';
 import bcrypt from 'bcryptjs';
+import generateJWT from '../helpers/generateJWT.js';
 
 const login = async(req, res=response) => {
     const {email, password} = req.body
@@ -20,13 +21,18 @@ const login = async(req, res=response) => {
             return res.status(400).json({msg: 'La contraseña no es valida'})
         }
         
+        /* validacion de json web token */
+        const token = await generateJWT(user.id)
+    
+        res.json({
+            user,
+            token
+        })
     } catch (error) {
         console.log(error)
         return res.json({msg: "error contacte con soporte tecnico"})    
     }
-    res.json({
-        msg: 'Login'
-    })
+  
 }
 
 export const auth = {
