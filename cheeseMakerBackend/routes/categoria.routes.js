@@ -3,20 +3,22 @@ const { check } = require('express-validator');
 
 const { validateDocuments} = require('../middlewares/validate.documents.js');
 const { validateJWT } = require('../middlewares/validate.jwt.js');
+const { isAdminRole } = require('../middlewares/validate.role.js');
 
-const { postCategoria
-      } = require('../controllers/categoria.controllers.js');
+const { postCategoria, getCategoria, putCategoria, getCategorias, deleteCategoria } = require('../controllers/categoria.controllers.js');
 
 
 const router = Router();
 
-/**
- * localhost/api/categorias
+/*
+  localhost/api/categorias
  */
+router.get('/', getCategorias);
 
-
-
-
+router.get('/:id',[
+      check('id', 'no es id valido').isMongoId(),
+      validateDocuments
+] ,getCategoria);
 
 // Crear categoria - privado - cualquier persona con un token válido
 router.post('/', [ 
@@ -25,8 +27,18 @@ router.post('/', [
     validateDocuments
 ], postCategoria );
 
+router.put('/:id',[
+      validateJWT,
+      check('id', 'no es id valido').isMongoId(),
+      validateDocuments
+],putCategoria);
 
-
+router.delete('/:id',[
+      validateJWT,
+      check('id', 'no es id valido').isMongoId(),
+      isAdminRole,
+      validateDocuments      
+],deleteCategoria);
 
 
 
