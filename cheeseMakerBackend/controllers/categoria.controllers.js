@@ -1,21 +1,6 @@
+const { response } = require('express');
 const Categoria  = require('../models/Categoria.js');  
 
-const getCategorias = async(req,res)=>{
-    const categorias = await Categoria.find().populate('usuario', ['nombre','email']);
-    res.json(categorias);
-}
-
-const getCategoria = async (req, res) => {
-    idsearch = req.params.id;
-    const categoriaesp = await Categoria.findById(idsearch);
-    if (categoriaesp) {
-        res.json(categoriaesp);
-    }else{
-        res.json({
-            msg: `La categoria no existe`
-        });
-    }
-}
 const postCategoria = async(req, res ) => {
 
     const nombre = req.body.nombre.toUpperCase();
@@ -43,39 +28,63 @@ const postCategoria = async(req, res ) => {
     res.status(201).json(categoria);
 
 }
-putCategoria = async (req, res) => {
-    const id = req.params.id;
-    const put = await Categoria.findById(id)
-    if(put){
-        const categoria = await Categoria.findByIdAndUpdate( id, req.body, { new: true }); 
-        res.json(categoria);
-    }else{
-        res.json({
-            msg: `La categoria no existe`
-        });
-    }
+
+const getCategorias = async(req, res = response ) => {
+
+    const { hasta = 8, desde = 0 } = req.query;
+    const query = { estado: true };
+
+    const [ total, categorias ] = await Promise.all([
+        Categoria.countDocuments(query),
+        Categoria.find(query)
+            .populate('usuario', ['nombre', 'email'])
+            .skip( Number( desde ) )
+            .limit(Number( hasta ))
+    ]);
+
+    res.json({
+        total,
+        categorias
+    });
 }
 
-const deleteCategoria = async (req, res) => {
-    const id = req.params.id;
-    const del = await Categoria.findById(id)
-    if(del){
-        await Categoria.findByIdAndDelete(id); 
-        res.json({
-            msg: `Categoria eliminada`
-        })
-    }else{
-        res.json({
-            msg: `La categoria no existe`
-        });
-    }
+const getCategoria = async(req, res = response ) => {
+
+    const { id } = req.params;
+    const categoria = await Categoria.findById( id )
+                            .populate('usuario', 'nombre');
+
+    res.json( categoria );
+
 }
 
+const putCategoria = async( req, res = response ) => {
+
+    const { id } = req.params;
+    const { estado, usuario, ...data } = req.body;
+
+    data.nombre  = data.nombre.toUpperCase();
+    data.usuario = req.usuario._id;
+
+    const categoria = await Categoria.findByIdAndUpdate(id, data, { new: true });
+
+    res.json( categoria );
+
+}
+
+const delCategoria = async(req, res =response ) => {
+
+    const { id } = req.params;
+    const categoriaEliminada = await Categoria.findByIdAndUpdate( id, { estado: false }, {new: true });
+
+    res.json( categoriaEliminada );
+}
 
 module.exports = {
     postCategoria,
+    getCategorias,
     getCategoria,
     putCategoria,
-    getCategorias,
-    deleteCategoria 
+    delCategoria
 }
+

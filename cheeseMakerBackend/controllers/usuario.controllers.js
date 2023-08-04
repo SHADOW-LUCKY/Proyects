@@ -3,7 +3,7 @@ const bcryptjs = require ('bcryptjs');
 
 // 17. getUsers
 const getUsers = async(req, res)=>{
-    const { hasta, desde } = req.query;
+    const { hasta, desde} = req.query;
     const query = { estado: true };
 
 //const usuarios = await Usuario.find(query)
@@ -45,7 +45,7 @@ const postUsers = async (req, res)=>{
 }
 
 const deleteUsers = async (req, res)=>{
-    //19.  extraigo y respondo id pasado como parametro desde postman
+    //19.  extraigo id pasado como parametro desde postman
     const {id} = req.params
 
     //20. borrado fisico en DB
@@ -54,10 +54,7 @@ const deleteUsers = async (req, res)=>{
     //21.  borrado virtual.  solo se cambia el estado a false del usuario asociado al id en cuestion
     const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
 
-    res.json({
-        "message":"deleted",
-        usuario
-    })
+    res.json(usuario)
 }
 
 const putUsers = async (req, res)=>{
@@ -73,7 +70,7 @@ const putUsers = async (req, res)=>{
         resto.password = bcryptjs.hashSync( password, salt );
     }
     //Busca documento por el id y actualiza lo deseado(resto) de la coleccion.
-    const usuario = await Usuario.findByIdAndUpdate( id, resto, { new: true } );
+    const usuario = await Usuario.findByIdAndUpdate( id, resto, {new:true} );
 
     res.json({
         msg:"Usuario Actualizado",
