@@ -17,6 +17,9 @@ console.log(typeof isFired);
 //function
 /* tipos de datos Typescript */
 //ANY -> avoid it 
+let anything = "anything";
+anything = 1;
+console.log(anything);
 //unknown
 let alo;
 console.log(typeof alo);
