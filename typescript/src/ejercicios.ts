@@ -22,7 +22,7 @@ else{
 } */
 
 // 2
-
+/* 
 let fTotal = 0;
 let preTotal = parseFloat("");
 do{
@@ -35,4 +35,4 @@ do{
     alert("El precio total a pagar por los " + cart + " " + nart + "(s)" + " llevados es de" + " COP$" + preTotal);
 }while(confirm("¿Deseas añadir otro articulo?"));
 
-alert("Tu valor total a cancelar es de COP($)" + fTotal)
+alert("Tu valor total a cancelar es de COP($)" + fTotal) */

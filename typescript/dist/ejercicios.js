@@ -22,15 +22,17 @@ else{
      }, 1000);
 } */
 // 2
+/*
 let fTotal = 0;
 let preTotal = parseFloat("");
-do {
+do{
     let nombr = prompt("Ingresa tu nombre:");
     let nart = prompt(nombr + ", ingresa el nombre del articulo");
     let part = parseFloat(prompt("Ingresa el precio por unidad del o de los " + nart + "(s)"));
-    let cart = parseFloat(prompt("Digita el numero de " + nart + "(s) que desea llevar"));
-    preTotal = parseFloat(part * cart);
+    let cart = parseFloat(prompt("Digita el numero de "+ nart + "(s) que desea llevar"));
+    preTotal = parseFloat(part*cart);
     fTotal += preTotal;
     alert("El precio total a pagar por los " + cart + " " + nart + "(s)" + " llevados es de" + " COP$" + preTotal);
-} while (confirm("¿Deseas añadir otro articulo?"));
-alert("Tu valor total a cancelar es de COP($)" + fTotal);
+}while(confirm("¿Deseas añadir otro articulo?"));
+
+alert("Tu valor total a cancelar es de COP($)" + fTotal) */ 

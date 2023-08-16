@@ -35,6 +35,23 @@ const obj = {
 console.log(obj);
 
 
+type Album = {
+    id :number,
+    nombre :string,
+    singer :string
+} 
+
+const pista1:Album = {
+    id : 0,
+    nombre : "our god",
+    singer : "diego"
+}
+
+const pista2:Album = {
+    id : 1,
+    nombre : "hosanna",
+    singer : "ronaldinho"
+}
 
 
 
