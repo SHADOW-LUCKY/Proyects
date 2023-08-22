@@ -10,9 +10,10 @@ class centro {
     quantity(quant) {
         this.cantidad = quant;
     }
-    Cantidad() {
+    getQuantity() {
         var _a;
-        return `Hay ${(_a = this.cantidad) === null || _a === void 0 ? void 0 : _a.length} en el centro ${this.nombre}`;
+        const quantity = (_a = this.cantidad) === null || _a === void 0 ? void 0 : _a.length;
+        return `Hay ${quantity} en el centro ${this.nombre}`;
     }
 }
 class ruta {
@@ -85,4 +86,4 @@ const contrato2 = new contrato(camper2, "online");
 console.log(contrato1.continuecon(camper2));
 console.log(contrato1.tipocontrato);
 centro1.quantity([camper1, camper2, camper3, camper4]);
-console.log(centro1.Cantidad());
+console.log(centro1.getQuantity());
