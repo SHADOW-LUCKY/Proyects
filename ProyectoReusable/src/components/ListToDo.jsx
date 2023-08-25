@@ -1,10 +1,14 @@
-import Todo from './components/Todo';
+import '../index.css';
+import Todo from './Todo';
 function ListToDo(props) {
     const data = props.concepts
+    let all = []
+    for (let i = 0; i < data.length; i++) {
+        all.push(<Todo key={i} title={data[i].title} description={data[i].description} image={data[i].image} />)
+    }
     return (
         <div>
-            <Todo title={data[0].title} description={data[0].description} image={data[0].image}/>
-            
+            {all}
         </div>       
     )
 };

@@ -1,12 +1,14 @@
 function Todo(props) {
-const data = props.concepts
+const title = props.title
+const description = props.description
+const image = props.image
    return (
     <div>
         <ul id="data">
         <li className="concept">
-         <img src={data[0].image} alt={data[0].title} />
-        <h2>{data[0].title}</h2>
-        <p>{data[0].description}</p>
+         <img src={image} alt={title} />
+        <h2>{title}</h2>
+        <p>{description}</p>
         </li>
         </ul>
     </div>

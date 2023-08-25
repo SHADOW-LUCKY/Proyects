@@ -33,7 +33,9 @@ function App() {
         <h1>Key React Concepts</h1>
         <p>Selected key React concepts you should know about</p>
       </header>
-      <ListToDo concepts={concepts} />
+       <div >
+        <ListToDo concepts={concepts} />
+      </div>
     </div>
   );
 }
