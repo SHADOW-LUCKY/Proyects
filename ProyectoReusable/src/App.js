@@ -1,40 +1,39 @@
-import keyConceptsImage from './assets/images/key-concepts.png';
-import componentsImage from './assets/images/components.png';
-import stateImage from './assets/images/state.png';
-import eventsImage from './assets/images/events.png';
+import mug from './assets/images/mug.jpg';
+import wallet from './assets/images/wallet.jpg';
+import white from './assets/images/white.jpg';
 import ListToDo from './components/ListToDo';
+import Todo from './components/Todo';
 
 const concepts = [
   {
-    title: 'Components',
-    image: componentsImage,
+    title: 'T-shirt',
+    image: white,
     description:
-      'Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. Components can receive data via props, and they can render dynamic output using JSX.',
+      'A white t-shirt',
+    price: 35,
   },
   {
-    title: 'State',
-    image: stateImage,
+    title: 'Wallet',
+    image: wallet,
     description:
-      'State is data that may change over time. As it changes, the UI should be updated to reflect the updated data. Each component can maintain its own state and multiple components can share state.',
+      'A fancy wallet',
+    price: 20,
   },
   {
-    title: 'Events',
-    image: eventsImage,
+    title: 'Cup',
+    image: mug,
     description:
-      'Event handlers are added via props to (built-in) components. You pass functions as values to such event handlers to control which functions gets executed for which event.',
+      'A Tea cup',
+    price: 5,
   },
 ];
 
 function App() {
   return (
     <div>
-      <header>
-        <img src={keyConceptsImage} alt="Medal badge with a star" />
-        <h1>Key React Concepts</h1>
-        <p>Selected key React concepts you should know about</p>
-      </header>
+        <h1>E-commerce in React and SnipCart</h1>
        <div >
-        <ListToDo concepts={concepts} />
+        <ListToDo  concepts={concepts} />
       </div>
     </div>
   );
