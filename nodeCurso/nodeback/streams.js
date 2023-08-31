@@ -1,6 +1,6 @@
 const fs = require('fs')
 const http = require('http').createServer()
-let port = 3000
+let port = 4000
 
 http.on('request', (req, res) => {
    //normal solving
@@ -12,7 +12,7 @@ http.on('request', (req, res) => {
     }) */
 
     //stream solving
-    const readable = fs.createReadStream('test.txt')
+ /*    const readable = fs.createReadStream('test.txt')
     readable.on('data', (chunk) => {
         res.write(chunk) 
     })
@@ -20,6 +20,15 @@ http.on('request', (req, res) => {
         res.end()
         
     })
+    readable.on('error', (err) => {
+        console.log(err)
+        res.statusCode = 500
+        res.end('file not found')
+    }) */
+    // solution 3
+    const readable = fs.createReadStream('test.txt')
+    readable.pipe(res)
+
 })
 
 http.listen(port, () => {
