@@ -11,32 +11,35 @@ const readFilePro = file => {
     })
 }
 
-const writeFilePro = (file, data) => {
+const appendFilePro = (file, data) => {
     return new Promise((resolve, reject) => {
-        fs.writeFile(file, data, (err) => {
+        fs.appendFile(file, data, (err) => {
             if(err) reject('could not write file');
             resolve('success');
         })
     })
 }
 
+
 const getDogPic = async() => {
     try {
-        const data = await readFilePro(`${__dirname}/dog.txt`);
-        console.log(`breed: ${data}`);
+        let data = await readFilePro(`${__dirname}/dog.txt`)
+        data = data.toString();
+        const breeds = data.split(',');
     
-        const res = await superagent.get(`https://dog.ceo/api/breed/${data}/images/random`);
-        console.log(res.body.message);
-    
-        await writeFilePro('dog-imgs.txt',res.body.message)
-        console.log('done writing to file'); 
+        breeds.forEach(async  breed => {
+            const res = await superagent.get(`https://dog.ceo/api/breed/${breed}/images/random`)
+            await appendFilePro(`${__dirname}/dog-imgs.txt`, `${res.body.message}\n`)
+            console.log(`${res.body.message} saved`);
+        });     
+        
     } catch (err) {
         console.log(err);
     }
 }
 getDogPic();
 
-(async()=>{
+/*(async()=>{
     try {
         console.log('1: started');
         await getDogPic();
@@ -44,7 +47,9 @@ getDogPic();
     } catch (error) {
         console.log(error);
     }
-})()
+})()*/
+
+
 
 //usando el then
 /*     readFilePro(`${__dirname}/dog.txt`).then(data => {
