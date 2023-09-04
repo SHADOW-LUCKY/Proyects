@@ -4,7 +4,7 @@ const superagent = require('superagent');
 
 const readFilePro = file => {
     return new Promise((resolve, reject) => {
-        fs.readFile(file, (err, data) => {
+        fs.readFile(file, 'utf-8',(err, data) => {
             if(err)reject('could not read file');
             resolve(data);
         })
@@ -23,8 +23,7 @@ const appendFilePro = (file, data) => {
 
 const getDogPic = async() => {
     try {
-        let data = await readFilePro(`${__dirname}/dog.txt`)
-        data = data.toString();
+        const data = await readFilePro(`${__dirname}/dog.txt`)
         const breeds = data.split(',');
     
         breeds.forEach(async  breed => {
